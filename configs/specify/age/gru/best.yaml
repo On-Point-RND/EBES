@@ -1,0 +1,18 @@
+optimizer:
+  params:
+    weight_decay: 1e-8 # 60% matters. [1e-12, 1e-6]
+    lr: 1e-3 # 100% matter [1e-6 - 3e-3]
+model:
+  encoder:
+    params:
+      hidden_size: 95 # 100% matter. 50-120
+      num_layers: 1 # 70% matter
+      dropout: 0.0 # doesnt matter
+  preprocess:
+    params:
+      time_process: cat # 70% matter
+      num_norm: false # doesnt matter
+      cat_emb_dim: 118 # matters. higher -> better
+      num_emb_dim: 64 # matters. higher -> better
+  aggregation:
+    name: ValidHiddenMean # 100% matter

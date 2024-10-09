@@ -1,0 +1,120 @@
+method_name: primenet
+runner_name: PrimeNetRunner
+
+data:
+  loaders:
+    primenet_train:
+      query: "_seq_len > 3"
+      split_idx: 0
+      preprocessing: primenet_pipeline
+      batch_size: ${data.loaders.train.batch_size}
+      drop_incomplete: true
+      shuffle: true
+      num_workers: 4
+      labeled: False
+    primenet_val:
+      query: "_seq_len > 3"
+      split_idx: 1
+      preprocessing: primenet_pipeline
+      batch_size: ${data.loaders.train.batch_size}
+      num_workers: 4
+      labeled: False
+    train:
+      batch_size: 32
+    full_train:
+      batch_size: 32
+    train_val:
+      batch_size: 32
+    hpo_val:
+      batch_size: 32
+test_data:
+  loaders:
+    test:
+      batch_size: 32
+
+pretrainer:
+  ckpt_track_metric: PrimeNetAccuracy
+  metrics_on_train: true
+  patience: ${patience}
+  total_iters: 100_000
+
+trainer:
+  ckpt_track_metric: ${main_metric}
+  metrics_on_train: true
+  patience: ${patience}
+  total_iters: 100_000
+
+model:
+  preprocess:
+    name: Batch2Seq
+    params:
+      cat_cardinalities: ${cc}
+      num_features: ${nn}
+      time_process: "none" # diff | cat| "none"
+      num_norm: true
+      num_emb_dim: 2
+  encoder: 
+    name: TimeBERTForMultiTask
+    params: 
+      input_dim: output_dim_from_prev
+      max_length: ${data.preprocessing.common_pipeline.max_seq_len}
+      n_classes: ${n_classes}
+      hidden_size: 128
+      pooling: bert
+      pretrain: False
+      dropout: 0.3
+      num_heads: 1
+      embed_time: 128
+
+pretrain_model:
+  preprocess: ${model.preprocess}
+  encoder: 
+    name: TimeBERTForMultiTask
+    params: 
+      input_dim: output_dim_from_prev
+      max_length: ${data.preprocessing.common_pipeline.max_seq_len}
+      n_classes: ${n_classes}
+      hidden_size: ${model.encoder.params.hidden_size}
+      pooling: bert
+      pretrain: True
+      dropout: ${model.encoder.params.dropout}
+      num_heads: ${model.encoder.params.num_heads}
+      embed_time: ${model.encoder.params.embed_time}      
+
+optimizer:
+  name: Adam
+  params:
+    lr: 3.e-4
+    weight_decay: 1.e-5
+
+optuna:
+  params:
+    n_trials: 70
+    n_startup_trials: 10
+    request_list: 
+      - 'model.encoder.params.hidden_size': 128
+        'model.preprocess.params.cat_emb_dim': 8
+        'model.preprocess.params.num_emb_dim': 8
+        'model.preprocess.params.time_process': 'cat'
+        'model.preprocess.params.num_norm': True
+        'model.preprocess.params.dropout': 0
+        'model.encoder.params.num_heads': 8
+        'pretrainer.total_iters': 100_000
+    target_metric: ${main_metric}
+  suggestions:
+    optimizer.params.weight_decay: [suggest_float, {low: 1.e-10, high: 1.e-2, log: True}]
+    optimizer.params.lr: [suggest_float, {low: 1.e-5, high: 1.e-2, log: True}]
+
+    model.preprocess.params.time_process: [suggest_categorical, {choices: ["diff", "cat", "none"]}]
+    model.preprocess.params.num_norm: [suggest_categorical, {choices: [true, false]}]
+    model.preprocess.params.cat_emb_dim: [suggest_int, {low: 1, high: 33, log: False}]
+    model.preprocess.params.num_emb_dim: [suggest_int, {low: 1, high: 33, log: False}]
+    
+    model.encoder.params.hidden_size: [suggest_int, {low: 8, high: 512, log: False, step: 8}]
+    model.encoder.params.pooling: [suggest_categorical, {choices: ["ave", "att", "bert"]}]
+    pretrain_model.encoder.params.pooling: [suggest_categorical, {choices: ["ave", "att", "bert"]}]
+    model.encoder.params.dropout: [suggest_float, {low: 0, high: 0.5, log: False}]
+    model.encoder.params.num_heads: [suggest_categorical, {choices: [1, 2, 4, 8]}]
+    model.encoder.params.embed_time: [suggest_int, {low: 8, high: 128, log: False, step: 8}]
+
+    pretrainer.total_iters: [suggest_categorical, {choices: [0, 100_000]}]

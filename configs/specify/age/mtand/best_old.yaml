@@ -1,0 +1,15 @@
+optimizer:
+  params:
+    weight_decay: 3.353337131238081e-13  # 30%, less is better
+    lr: 0.007838282057729897  # 100% [1e-3, 1e-2]
+model:
+  encoder:
+    params:
+      nhidden: 18  # 30% [0, 64]
+      embed_time: 35  # ~0%
+  preprocess:
+    params:
+      time_process: none  # 20% {diff, none}
+      num_norm: false  # 70%
+      cat_emb_dim: 8  # 30% [4, 10]
+      num_emb_dim: 4  # 5%

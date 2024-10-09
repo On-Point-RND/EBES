@@ -1,0 +1,22 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.5.0
+  hooks:
+  - id: trailing-whitespace
+    types: ["python"]
+  - id: check-added-large-files
+    args: ['--maxkb=10000']
+  - id: mixed-line-ending
+- repo: https://github.com/psf/black
+  rev: 24.1.1
+  hooks:
+  - id: black
+- repo: https://github.com/charliermarsh/ruff-pre-commit
+  rev: v0.2.0
+  hooks:
+  - id: ruff
+# - repo: https://github.com/RobertCraigie/pyright-python
+#   rev: v1.1.350
+#   hooks:
+#   - id: pyright
+

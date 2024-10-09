@@ -1,0 +1,19 @@
+run_name: "${method_name}/optuna_3cv"
+common_seed: 0
+device:
+
+runner:
+  name: ${runner_name}
+  run_type: optuna
+  seed_keys: 
+    - "common_seed"
+    - "data.loaders.train.random_seed"
+    - "data.dataset.split_seed"
+  params:
+    n_runs: 3
+    n_workers: 3
+  device_list: ["cuda:0", "cuda:1", "cuda:2"]
+
+logging:
+  file_lvl: info
+  cons_lvl: info

@@ -1,0 +1,23 @@
+optimizer:
+  params:
+    weight_decay: 5.621369148394242e-06
+    lr: 1.2022643451986044e-05
+model:
+  encoder:
+    params:
+      hidden_size: 111
+      num_layers: 3
+      dropout: 0.010559973203651445
+  preprocess:
+    params:
+      time_process: cat
+      num_norm: false
+      cat_emb_dim: 89
+      num_emb_dim: 1
+  aggregation:
+    name: ValidHiddenMean
+unsupervised_loss:
+  params:
+    margin: 0.4272280422976794
+unsupervised_trainer:
+  total_iters: 0

@@ -1,0 +1,118 @@
+log_dir: log/age
+patience: 5
+n_classes: 4
+main_metric: MulticlassAccuracy
+main_loss: 
+  name: nn.CrossEntropyLoss
+
+cc: 
+  small_group: 202
+nn:
+  - amount_rur
+
+data:
+  dataset:
+    parquet_path: "data/age/preprocessed_all/train"
+    random_split: true
+    split_seed: 42
+
+    split_sizes: 
+      - 0.7   # train
+      - 0.15  # train_val
+      - 0.15  # hpo_val
+
+  preprocessing:
+    common_pipeline: &common_pipeline
+      max_seq_len: 1000
+      time_name: trans_date
+      index_name: client_id
+      target_name: bins
+      cat_cardinalities: ${cc}
+      num_names: ${nn}
+      batch_transforms:
+        - RescaleTime:
+            loc: 0.0
+            scale: 1000.0
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - TargetToLong
+        - MaskValid
+        - Logarithm:
+            names: ["amount_rur"]
+    contrastive_pipeline:
+      <<: *common_pipeline
+      batch_transforms:
+        - RescaleTime:
+            loc: 0.0
+            scale: 1000.0
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - MaskValid
+        - Logarithm:
+            names: ["amount_rur"]
+        - ContrastiveTarget
+        - RandomSlices:
+            split_count: 5
+            cnt_min: 25
+            cnt_max: 200
+            short_seq_crop_rate: 0.8
+            seed: 0
+    primenet_pipeline:
+      <<: *common_pipeline
+      batch_transforms:
+        - RescaleTime:
+            loc: 0.0
+            scale: 1000.0
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - TargetToLong
+        - MaskValid
+        - Logarithm:
+            names: ["amount_rur"]
+        - PrimeNetSampler:
+            segment_num: 3
+
+  loaders:
+    train:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      drop_incomplete: true
+      shuffle: true
+      loop: false
+      num_workers: 4
+      random_seed: 42
+    full_train:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+    train_val:
+      split_idx: 1
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+    hpo_val:
+      split_idx: 2
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+
+test_data:
+  dataset:
+    parquet_path: "data/age/preprocessed_all/test"
+    split_sizes: 
+      - 1.0
+  preprocessing:
+    common_pipeline: *common_pipeline
+  loaders:
+    test:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+
+metrics:
+  - name: ${main_metric}
+    params: 
+      num_classes: ${n_classes}

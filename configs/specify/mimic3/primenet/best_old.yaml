@@ -1,0 +1,21 @@
+optimizer:
+  params:
+    weight_decay: 1.7261496254130526e-10  # 20%, [0, 1e-4]
+    lr: 4.522941202943355e-05  # 80% [1e-5, 3e-4]
+model:
+  encoder:
+    params:
+      hidden_size: 85  # 40% [60, 120]
+      pooling: att  # 40% {att, ave}
+  preprocess:
+    params:
+      time_process: cat  # 100%
+      num_norm: true  # 100%
+      cat_emb_dim: 1  # 10% [1, 8]
+      num_emb_dim: 3  # 0%
+pretrain_model:
+  encoder:
+    params:
+      pooling: att  # 40% {att, ave}
+pretrainer:
+  total_iters: 100000  # 100%

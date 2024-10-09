@@ -1,0 +1,21 @@
+optimizer:
+  params:
+    weight_decay: 3.5551093123280083e-10
+    lr: 0.00016898085229292818
+model:
+  encoder:
+    params:
+      num_layers: 2
+      scale_hidden: 10
+      dropout: 0.14244657870809346
+      pos_dropout: 0.12600642239080168
+      pos_enc_type: none
+      num_heads: 8
+  preprocess:
+    params:
+      time_process: diff
+      num_norm: false
+      cat_emb_dim: 128
+      num_emb_dim: 8
+  aggregation:
+    name: ValidHiddenMean

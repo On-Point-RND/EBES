@@ -1,0 +1,119 @@
+log_dir: log/pendulum
+patience: 10
+n_classes: 1
+main_metric: NegRootMeanSquaredError
+main_loss: 
+  name: nn.MSELoss
+
+nn: [x, y]
+cc:
+
+data:
+  dataset:
+    parquet_path: "data/pendulum/preprocessed/train"
+    random_split: true
+    split_seed: 42
+
+    split_sizes: 
+      - 0.7   # train
+      - 0.15  # train_val
+      - 0.15  # hpo_val
+
+  preprocessing:
+    common_pipeline: &common_pipeline
+      max_seq_len: 256
+      time_name: time
+      index_name: id
+      target_name: target
+      num_names: ${nn}
+      batch_transforms:
+        - RescaleTime:
+            loc: 0.0
+            scale: 5.0
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - MaskValid
+        - ForwardFillNans:
+            backward: true
+        - FillNans:
+            fill_value: -1.0
+        - UnsqueezeTarget
+    contrastive_pipeline:
+      <<: *common_pipeline
+      batch_transforms:
+        - RescaleTime:
+            loc: 0.0
+            scale: 5.0
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - MaskValid
+        - ForwardFillNans:
+            backward: true
+        - FillNans:
+            fill_value: -1.0
+        - ContrastiveTarget
+        - RandomSlices:
+            split_count: 5
+            cnt_min: 10
+            cnt_max: 30
+            short_seq_crop_rate: 0.8
+            seed: 0
+    primenet_pipeline:
+      <<: *common_pipeline
+      batch_transforms:
+        - RescaleTime:
+            loc: 0.0
+            scale: 5.0
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - MaskValid
+        - ForwardFillNans:
+            backward: true
+        - FillNans:
+            fill_value: -1.0
+        - PrimeNetSampler:
+            segment_num: 3
+        - UnsqueezeTarget
+
+  loaders:
+    train:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      drop_incomplete: true
+      shuffle: true
+      num_workers: 4
+      random_seed: 0
+    full_train:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+    train_val:
+      split_idx: 1
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+    hpo_val:
+      split_idx: 2
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+
+test_data:
+  dataset:
+    parquet_path: "data/pendulum/preprocessed/test"
+    split_sizes: 
+      - 1.0
+  preprocessing:
+    common_pipeline: *common_pipeline
+  loaders:
+    test:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+
+metrics:
+  - name: ${main_metric}
+  - name: R2Score

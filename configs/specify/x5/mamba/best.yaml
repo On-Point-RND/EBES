@@ -1,0 +1,17 @@
+optimizer:
+  params:
+    weight_decay: 2.0537645560605592e-07 # 5%. < 1e-5
+    lr: 2.772909994871323e-05 # 100%. less is better
+model:
+  encoder:
+    params:
+      n_layer: 3 # 30%. more better
+      rescale_prenorm_residual: false # 0%
+  preprocess:
+    params:
+      time_process: diff # 0%
+      num_norm: true # 100%
+      cat_emb_dim: 113 # 5%. > 50
+      num_emb_dim: 29 # 20%. [10, 70]
+  aggregation:
+    name: ValidHiddenMean # 100%

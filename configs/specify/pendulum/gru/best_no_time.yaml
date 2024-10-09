@@ -1,0 +1,18 @@
+optimizer:
+  params:
+    weight_decay: 3.1229789909528563e-10 # 60%. [3e-10, 2e-5] 
+    lr: 0.00025949216092386544 # 60%. [5e-5, 4e-4]
+model:
+  encoder:
+    params:
+      hidden_size: 88 # 40%. [30, 400]
+      num_layers: 3 # 100%. more better
+      dropout: 2.164946345863165e-05 # 0%.
+  preprocess:
+    params:
+      time_process: none # 100%. none is baaad. cat slightly better than diff
+      num_norm: false # 100% 
+      cat_emb_dim: 65 # 30%. 23-112
+      num_emb_dim: 67 # 20%. 20-100
+  aggregation:
+    name: ValidHiddenMean # 100%

@@ -1,0 +1,18 @@
+optimizer:
+  params:
+    weight_decay: 0.0008 # more better
+    lr: 0.0033 # anything less than 0.005
+model:
+  encoder:
+    params:
+      hidden_size: 800 # fine
+      num_layers: 1 # fine
+      dropout: 0 # doesnt matter
+  preprocess:
+    params:
+      time_process: none # doesnt matter
+      num_norm: true # 100% matters
+      cat_emb_dim: 20 # doesnt matter
+      num_emb_dim: 3 # less is better
+  aggregation:
+    name: TakeLastHidden # 90% matters

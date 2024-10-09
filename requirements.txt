@@ -1,0 +1,9 @@
+pandas==2.2.0
+pyspark==3.5.0
+seaborn==0.13.2
+optuna==3.5.0
+torcheval==0.0.7
+omegaconf==2.3.0
+lightgbm==4.3.0
+mamba_ssm==1.2.2
+torchcde==0.2.5

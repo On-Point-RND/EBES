@@ -1,0 +1,115 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ebes"
+version = "0.0.3"
+authors = [
+  { name="Osin Dmitry", email="d.osin@skoltech.ru" },
+  { name="Igor Udovichenko", email="i.udovichenko@skoltech.ru" },
+]
+description = "EBES: Easy Benchmarking for Event Sequences."
+readme = "README.md"
+
+dependencies = [
+    "pandas==2.2.0",
+    "pyspark==3.5.0",
+    "seaborn==0.13.2",
+    "optuna==3.5.0",
+    "torcheval==0.0.7",
+    "omegaconf==2.3.0",
+    "lightgbm==4.3.0",
+    "mamba_ssm==1.2.2",
+    "torchcde==0.2.5",
+]
+
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/On-Point-RND/EBES"
+Issues = "https://github.com/On-Point-RND/EBES"
+
+[tool.setuptools.packages.find]
+include = ["ebes*"]
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+    "data",
+    "experiments",
+    "cd.py",  # not our code
+]
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+# Assume Python 3.8
+target-version = "py310"
+
+[tool.ruff.lint]
+# Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
+select = ["E", "F", "N", "UP", "A", "G010", "NPY"]
+ignore = ["N812", "NPY002"]
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+pep8-naming.extend-ignore-names = ["x"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "F403", "E402"]
+
+[tool.pyright]
+exclude = [
+    ".git",
+    ".vim",
+    ".vscode",
+    "data",
+    "dev",
+    "experiments",
+    "ebes/model/PrimeNet",
+    ".ipynb_checkpoints",
+    "cd.py",
+]
+
+reportMissingImports = true
+reportMissingTypeStubs = false
+
+pythonPlatform = "Linux"
+

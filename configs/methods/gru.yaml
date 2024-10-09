@@ -1,0 +1,71 @@
+method_name: gru
+runner_name: SupervisedRunner
+
+loss:
+  name: CrossEntropy
+
+trainer:
+  ckpt_track_metric: ${main_metric}
+  metrics_on_train: true
+  patience: ${patience}
+  total_iters: 100_000
+
+model:
+  preprocess:
+    name: Batch2Seq
+    params:
+      cat_cardinalities: ${cc}
+      num_features: ${nn}
+      cat_emb_dim: 16
+      num_emb_dim: 16
+      time_process: "diff" # "diff" | "cat" | "none"
+      num_norm: true
+  encoder: 
+    name: GRU
+    params:
+      input_size: output_dim_from_prev
+      hidden_size: 800
+      num_layers: 1
+      dropout: 0.
+      initial_hidden: static
+  aggregation:
+    name: TakeLastHidden
+  head:
+    name: nn.Linear
+    params:
+      in_features: output_dim_from_prev
+      out_features: ${n_classes}
+
+optimizer:
+  name: Adam
+  params:
+    lr: 3.e-4
+    weight_decay: 1.e-4
+
+optuna:
+  params:
+    n_trials: 70
+    n_startup_trials: 3
+    request_list: 
+      - 'optimizer.params.weight_decay': 1.e-05
+        'optimizer.params.lr': 3.e-4
+        'model.encoder.params.hidden_size': 200
+        'model.encoder.params.num_layers': 1
+        'model.encoder.params.dropout': 1.e-10
+        'model.preprocess.params.time_process': 'diff'
+        'model.preprocess.params.num_norm': True
+    target_metric: ${main_metric}
+  suggestions:
+    optimizer.params.weight_decay: [suggest_float, {low: 1.e-15, high: 1.e-3, log: True}]
+    optimizer.params.lr: [suggest_float, {low: 1.e-5, high: 1.e-1, log: True}]
+
+    model.encoder.params.hidden_size: [suggest_int, {low: 10, high: 1200, log: True}]
+    model.encoder.params.num_layers: [suggest_int, {low: 1, high: 3, log: False}]
+    model.encoder.params.dropout: [suggest_float, {low: 1.e-10, high: 0.3, log: True}]
+
+    model.preprocess.params.time_process: [suggest_categorical, {choices: ["diff", "cat", "none"]}]
+    model.preprocess.params.num_norm: [suggest_categorical, {choices: [true, false]}]
+    model.preprocess.params.cat_emb_dim: [suggest_int, {low: 1, high: 128, log: False}]
+    model.preprocess.params.num_emb_dim: [suggest_int, {low: 1, high: 128, log: False}]
+
+    model.aggregation.name: [suggest_categorical, {choices: ["TakeLastHidden", "ValidHiddenMean"]}]

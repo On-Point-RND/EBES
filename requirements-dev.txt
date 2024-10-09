@@ -1,0 +1,10 @@
+pre-commit==3.6.0
+black==24.1.1
+pyright==1.1.349
+ruff==0.2.0
+plotly==5.20.0
+jupyterlab==4.2.1
+tenacity==8.3.0
+sphinx==7.3.7
+sphinx-rtd-theme==2.0.0
+sphinx-autodoc-typehints==2.4.4

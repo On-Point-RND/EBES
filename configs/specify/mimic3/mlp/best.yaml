@@ -1,0 +1,19 @@
+optimizer:
+  params:
+    weight_decay: 0.0008472992065330234 # 30% more better
+    lr: 1.843183527241732e-05 # 80% less is better
+model:
+  head_0:
+    params:
+      out_features: 658 # 5%. > 100
+  drop_0:
+    params:
+      p: 6.08684181258917e-08 # 5%. but less than 0.3
+  preprocess:
+    params:
+      time_process: cat # 20%. cat better than none or diff
+      num_norm: true # 100%
+      cat_emb_dim: 114 # 0%
+      num_emb_dim: 73 # 0%
+  aggregation:
+    name: TakeLastHidden # 20%

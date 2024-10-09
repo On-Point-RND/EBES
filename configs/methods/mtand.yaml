@@ -1,0 +1,86 @@
+method_name: mtand
+runner_name: SupervisedRunner
+
+loss:
+  name: CrossEntropy
+
+trainer:
+  ckpt_track_metric: ${main_metric}
+  metrics_on_train: true
+  patience: ${patience}
+  total_iters: 100_000
+
+model:
+  preprocess:
+    name: Batch2Seq
+    params:
+      cat_cardinalities: ${cc}
+      num_features: ${nn}
+      cat_emb_dim: 8
+      num_emb_dim: 8
+      time_process: "diff" # "diff" | "cat" | "none"
+      num_norm: true
+  mtand_block: 
+    name: MTAND
+    params:
+      input_dim: output_dim_from_prev
+      nhidden: 32
+      embed_time: 128
+  encoder: 
+    name: GRU
+    params:
+      input_size: output_dim_from_prev
+      hidden_size: output_dim_from_prev
+      num_layers: 1
+  aggregation:
+    name: ValidHiddenMean
+  head:
+    name: nn.Linear
+    params:
+      in_features: output_dim_from_prev
+      out_features: ${n_classes}
+
+optimizer:
+  name: Adam
+  params:
+    lr: 3.e-3
+    weight_decay: 1.e-4
+
+optuna:
+  params:
+    n_trials: 80
+    n_startup_trials: 3
+    request_list: 
+      - 'optimizer.params.weight_decay': 1.e-05
+        'optimizer.params.lr': 3.e-4
+        'model.preprocess.params.time_process': 'diff'
+        'model.preprocess.params.num_norm': True
+        'model.preprocess.params.cat_emb_dim': 8
+        'model.preprocess.params.num_emb_dim': 8
+        
+        'model.mtand_block.params.nhidden': 32
+        'model.mtand_block.params.embed_time': 128
+        'model.mtand_block.params.num_heads': 8
+
+        'model.encoder.params.num_layers': 1
+        'model.encoder.params.dropout': 0
+        
+        'model.aggregation.name': ValidHiddenMean
+    target_metric: ${main_metric}
+  suggestions:
+    optimizer.params.weight_decay: [suggest_float, {low: 1.e-15, high: 1.e-3, log: True}]
+    optimizer.params.lr: [suggest_float, {low: 1.e-5, high: 1.e-1, log: True}]
+
+    model.preprocess.params.time_process: [suggest_categorical, {choices: ["diff", "cat", "none"]}]
+    model.preprocess.params.num_norm: [suggest_categorical, {choices: [true, false]}]
+    model.preprocess.params.cat_emb_dim: [suggest_int, {low: 1, high: 32, log: False}]
+    model.preprocess.params.num_emb_dim: [suggest_int, {low: 1, high: 32, log: False}]
+
+    model.mtand_block.params.nhidden: [suggest_int, {low: 10, high: 800, log: True}]
+    model.mtand_block.params.embed_time: [suggest_int, {low: 8, high: 128, log: False, step: 8}]
+    model.mtand_block.params.num_heads: [suggest_categorical, {choices: [1, 2, 4, 8]}]
+
+    model.encoder.params.num_layers: [suggest_int, {low: 1, high: 3, log: False}]
+    model.encoder.params.dropout: [suggest_float, {low: 0, high: 0.3, log: False}]
+
+    model.aggregation.name: [suggest_categorical, {choices: ["TakeLastHidden", "ValidHiddenMean"]}]

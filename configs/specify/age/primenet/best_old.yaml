@@ -1,0 +1,21 @@
+optimizer:
+  params:
+    weight_decay: 1.6600187109278675e-08 # 10%. less is better
+    lr: 0.009752261855612463 # 100%. more is better
+model:
+  encoder:
+    params:
+      hidden_size: 12 # 100%. less is better
+      pooling: ave # 100%. ave > att > bert
+  preprocess:
+    params:
+      time_process: none # 5%. diff>cat>none
+      num_norm: false # 20% 
+      cat_emb_dim: 9 # 50%. more is better
+      num_emb_dim: 2 # 30%. less is better
+pretrain_model:
+  encoder:
+    params:
+      pooling: att # 50%. bert sucks
+pretrainer:
+  total_iters: 100000 # 80%. 

@@ -1,0 +1,21 @@
+optimizer:
+  params:
+    weight_decay: 1.139155777031885e-08 # 10%. less than 1e-5
+    lr: 0.0009120098039146554 # 40%. [2e-4,2e-3] 
+model:
+  encoder:
+    params:
+      hidden_size: 109 # 80%. more is better
+      pooling: att # 100%. bert is worst. ave slightly worse
+  preprocess:
+    params:
+      time_process: cat # 80%. none and diff same worse
+      num_norm: false # 100%
+      cat_emb_dim: 7 # 0%
+      num_emb_dim: 8 # 0%
+pretrain_model:
+  encoder:
+    params:
+      pooling: att # 80%. bert is worst. ave slightly worse
+pretrainer:
+  total_iters: 100000 # 100%!!!!

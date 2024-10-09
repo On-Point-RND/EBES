@@ -1,0 +1,127 @@
+log_dir: log/x5
+patience: 3
+n_classes: 6
+main_metric: MulticlassAccuracy
+main_loss:
+  name: nn.CrossEntropyLoss
+cc:
+  is_own_trademark: 2
+  is_alcohol: 2
+  level_1: 32
+  level_2: 32
+  level_3: 200
+  level_4: 800
+  segment_id: 120
+nn:
+  - trn_sum_from_iss
+  - netto
+  - regular_points_received
+  - express_points_received
+  - product_quantity
+  - trn_sum_from_red # alot of missing, copyes iss
+  - regular_points_spent
+  - express_points_spent
+  - purchase_sum
+data:
+  dataset:
+    parquet_path: "data/x5-retail/preprocessed/train"
+    random_split: true
+    split_seed: 42
+    split_sizes: 
+      - 0.7
+      - 0.15
+      - 0.15
+
+  preprocessing:
+    common_pipeline: &common_pipeline
+      max_seq_len: 512
+      time_name: transaction_datetime
+      index_name: client_id
+      target_name: age_clf
+      cat_cardinalities: ${cc}
+      num_names: ${nn}
+      batch_transforms:
+        - DatetimeToFloat:
+            loc: "2018-11-01"
+            scale: [30, "D"]
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - MaskValid
+        - FillNans:
+            fill_value: 0
+    primenet_pipeline:
+      <<: *common_pipeline
+      batch_transforms:
+        - DatetimeToFloat:
+            loc: "2018-11-01"
+            scale: [30, "D"]
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - MaskValid
+        - FillNans:
+            fill_value: 0
+        - PrimeNetSampler:
+            segment_num: 3
+    contrastive_pipeline:
+      <<: *common_pipeline
+      batch_transforms:
+        - DatetimeToFloat:
+            loc: "2018-11-01"
+            scale: [30, "D"]
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - FillNans:
+            fill_value: 0
+        - ContrastiveTarget
+        - RandomSlices:
+            split_count: 5
+            cnt_min: 30
+            cnt_max: 180
+            short_seq_crop_rate: 0.8
+            seed: 0
+
+  loaders:
+    train:  # dataset name
+      split_idx: 0  # split index from dataset
+      preprocessing: common_pipeline
+      batch_size: 128
+      drop_incomplete: true  # default false
+      shuffle: true  # default false
+      loop: false
+      num_workers: 4
+      random_seed: 42
+    full_train:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+    train_val:
+      split_idx: 1
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+    hpo_val:
+      split_idx: 2
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+
+test_data:
+  dataset:
+    parquet_path: "data/x5-retail/preprocessed/test"
+    split_sizes: 
+      - 1.0
+  preprocessing:
+    common_pipeline: *common_pipeline
+  loaders:
+    test:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+
+
+metrics:
+  - name: ${main_metric}
+    params: 
+      num_classes: ${n_classes}

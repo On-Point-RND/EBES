@@ -1,0 +1,134 @@
+log_dir: log/mbd
+patience: 2
+n_classes: 4
+main_metric: MultiLabelMeanAUROC
+main_loss: 
+  name: MultiLabelBinaryCrossEntropyLoss
+
+cc: 
+  currency: 16
+  event_type: 56
+  event_subtype: 56
+  src_type11: 79
+  src_type12: 345
+  dst_type11: 81
+  dst_type12: 407
+  src_type21: 32846
+  src_type22: 88
+  src_type31: 2276
+  src_type32: 89
+nn:
+  - amount
+
+data:
+  dataset:
+    parquet_path: "data/mbd/preprocessed/train"
+    random_split: true
+    split_seed: 42
+
+    split_sizes: 
+      - 0.7   # train
+      - 0.15  # train_val
+      - 0.15  # hpo_val
+
+  preprocessing:
+    common_pipeline: &common_pipeline
+      max_seq_len: 150
+      time_name: event_time
+      index_name: client_id
+      target_name: ["bcard_target", "cred_target", "zp_target", "acquiring_target"]
+      cat_cardinalities: ${cc}
+      num_names: ${nn}
+      batch_transforms:
+        - DatetimeToFloat:
+            loc: "2022-01-01"
+            scale: [365, "D"]
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - TargetToLong
+        - MaskValid
+        - Logarithm:
+            names: ["amount"]
+    contrastive_pipeline:
+      <<: *common_pipeline
+      batch_transforms:
+        - DatetimeToFloat:
+            loc: "2022-01-01"
+            scale: [365, "D"]
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - MaskValid
+        - Logarithm:
+            names: ["amount"]
+        - ContrastiveTarget
+        - RandomSlices:
+            split_count: 5
+            cnt_min: 10
+            cnt_max: 100
+            short_seq_crop_rate: 0.8
+            seed: 0
+    primenet_pipeline:
+      <<: *common_pipeline
+      batch_transforms:
+        - DatetimeToFloat:
+            loc: "2022-01-01"
+            scale: [365, "D"]
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - TargetToLong
+        - MaskValid
+        - Logarithm:
+            names: ["amount"]
+        - PrimeNetSampler:
+            segment_num: 3
+
+  loaders:
+    train:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      drop_incomplete: true
+      shuffle: true
+      loop: true
+      num_workers: 3
+      random_seed: 42
+      labeled: false  # TODO: remove dirty hack
+    full_train:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 3
+      labeled: false  # TODO: remove dirty hack
+    train_val:
+      split_idx: 1
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 3
+      labeled: false  # TODO: remove dirty hack
+    hpo_val:
+      split_idx: 2
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 3
+      labeled: false  # TODO: remove dirty hack
+
+test_data:
+  dataset:
+    parquet_path: "data/mbd/preprocessed/test"
+    split_sizes: 
+      - 1.0
+  preprocessing:
+    common_pipeline: *common_pipeline
+  loaders:
+    test:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 3
+      labeled: false  # TODO: remove dirty hack
+
+metrics:
+  - name: ${main_metric}
+    params: 
+      num_tasks: ${n_classes}
+

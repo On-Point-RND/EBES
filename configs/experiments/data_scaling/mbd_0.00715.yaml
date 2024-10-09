@@ -1,0 +1,28 @@
+run_name: "${method_name}/data_scale_0.00715"
+patience: 10
+common_seed: 0
+device: "cuda:0"
+
+runner:
+  name: ${runner_name}
+  run_type: simple
+  seed_keys:
+    - "common_seed"
+    - "data.loaders.train.random_seed"
+    - "data.dataset.split_seed"
+  params:
+    n_runs: 3
+    n_workers: 3
+  device_list: ['cuda:0', 'cuda:1', 'cuda:2']
+
+logging:
+  file_lvl: info
+  cons_lvl: info
+
+# OVERWRITE
+data:
+  dataset:
+    split_sizes:
+      - 0.0060775  # train
+      - 0.0010725 # train_val
+      - 0.  # hpo_val

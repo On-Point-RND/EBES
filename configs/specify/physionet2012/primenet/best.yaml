@@ -1,0 +1,24 @@
+optimizer:
+  params:
+    weight_decay: 1.0427728847211862e-10
+    lr: 0.009091841982348626
+model:
+  preprocess:
+    params:
+      time_process: none
+      num_norm: true
+      cat_emb_dim: 24
+      num_emb_dim: 3
+  encoder:
+    params:
+      hidden_size: 32
+      pooling: bert
+      dropout: 0.09204192271663571
+      num_heads: 4
+      embed_time: 40
+pretrain_model:
+  encoder:
+    params:
+      pooling: bert
+pretrainer:
+  total_iters: 0

@@ -1,0 +1,15 @@
+optimizer:
+  params:
+    weight_decay: 2.1687839963128067e-15
+    lr: 0.04988528428126986
+model:
+  encoder:
+    params:
+      nhidden: 24
+      embed_time: 38
+  preprocess:
+    params:
+      time_process: cat
+      num_norm: false
+      cat_emb_dim: 8
+      num_emb_dim: 2

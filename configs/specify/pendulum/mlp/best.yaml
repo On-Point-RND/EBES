@@ -1,0 +1,19 @@
+optimizer:
+  params:
+    weight_decay: 3.2155553118896604e-13 # 5%. less is better
+    lr: 2.4444112980996017e-05 # 60%. [1e-5, 5e-5]
+model:
+  head_0:
+    params:
+      out_features: 1064 # 80%. more better
+  drop_0:
+    params:
+      p: 3.855360138715779e-09 # 80%. less is better
+  preprocess:
+    params:
+      time_process: cat # 20%. diff and none equally worse than cat
+      num_norm: false # 100%
+      cat_emb_dim: 17 # 30%. less is better(although it doesnt matter!)
+      num_emb_dim: 48 # 0%. 
+  aggregation:
+    name: ValidHiddenMean # 100%

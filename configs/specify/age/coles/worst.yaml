@@ -1,0 +1,23 @@
+optimizer:
+  params:
+    weight_decay: 4.2249780426490916e-05
+    lr: 0.0023906258935193626
+model:
+  encoder:
+    params:
+      hidden_size: 164
+      num_layers: 1
+      dropout: 2.435159324011445e-07
+  preprocess:
+    params:
+      time_process: none
+      num_norm: false
+      cat_emb_dim: 71
+      num_emb_dim: 117
+  aggregation:
+    name: TakeLastHidden
+unsupervised_loss:
+  params:
+    margin: 0.9677913638234243
+unsupervised_trainer:
+  total_iters: 100000

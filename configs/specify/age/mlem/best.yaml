@@ -1,0 +1,18 @@
+optimizer:
+  params:
+    weight_decay: 1.0434870734156373e-09
+    lr: 0.00025470210721276556
+model:
+  preprocess:
+    params:
+      normalize_z: true
+      num_norm: false
+      cat_emb_dim: 80
+      num_emb_dim: 48
+      enc_num_layers: 2
+      enc_aggregation: TakeLastHidden
+      dec_hidden_size: 352
+      dec_num_layers: 3
+      dec_num_heads: 4
+      dec_scale_hidden: 7
+      contrastive_weight: 2.069608217259716

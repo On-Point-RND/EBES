@@ -1,0 +1,83 @@
+method_name: transformer
+runner_name: SupervisedRunner
+
+loss:
+  name: CrossEntropy
+
+trainer:
+  ckpt_track_metric: ${main_metric}
+  metrics_on_train: true
+  patience: ${patience}
+  total_iters: 100_000
+
+model:
+  preprocess:
+    name: Batch2Seq
+    params:
+      cat_cardinalities: ${cc}
+      num_features: ${nn}
+      cat_emb_dim: 16
+      num_emb_dim: 16
+      time_process: "diff" # "diff" | "cat" | "none"
+      num_norm: true
+  encoder: 
+    name: Transformer
+    params:
+      input_size: output_dim_from_prev
+      max_len: ${data.preprocessing.common_pipeline.max_seq_len}
+      num_layers: 1
+      scale_hidden: 4
+      dropout: 0.1
+      pos_dropout: 0.1 
+      pos_enc_type: "base"
+      num_heads: 8
+  aggregation:
+    name: TakeLastHidden
+  head:
+    name: nn.Linear
+    params:
+      in_features: output_dim_from_prev
+      out_features: ${n_classes}
+
+optimizer:
+  name: Adam
+  params:
+    lr: 3.e-3
+    weight_decay: 1.e-4
+
+optuna:
+  params:
+    n_trials: 70
+    n_startup_trials: 3
+    request_list: 
+      - 'optimizer.params.weight_decay': 1.e-05
+        'optimizer.params.lr': 3.e-4
+        'model.encoder.params.num_layers' : 3
+        'model.encoder.params.scale_hidden': 16
+        'model.encoder.params.dropout': 0.1
+        'model.encoder.params.pos_dropout': 0.1
+        'model.encoder.params.pos_enc_type': "base"
+        'model.encoder.params.num_heads': 8
+
+        'model.preprocess.params.cat_emb_dim': 128
+        'model.preprocess.params.num_emb_dim': 128
+        'model.preprocess.params.time_process': 'diff'
+        'model.preprocess.params.num_norm': True
+    target_metric: ${main_metric}
+  suggestions:
+    optimizer.params.weight_decay: [suggest_float, {low: 1.e-15, high: 1.e-3, log: True}]
+    optimizer.params.lr: [suggest_float, {low: 1.e-5, high: 1.e-1, log: True}]
+
+    model.encoder.params.num_layers: [suggest_int, {low: 1, high: 3, log: False}]
+    model.encoder.params.scale_hidden: [suggest_int, {low: 1, high: 16, log: False}]
+    model.encoder.params.dropout: [suggest_float, {low: 0, high: 0.6, log: False}]
+    model.encoder.params.pos_dropout: [suggest_float, {low: 0, high: 0.6, log: False}]
+    model.encoder.params.pos_enc_type: [suggest_categorical, {choices: ["base", "cat", "learned", "none"]}]
+    model.encoder.params.num_heads: [suggest_categorical, {choices: [1, 2, 4, 8]}]
+    
+    model.preprocess.params.time_process: [suggest_categorical, {choices: ["diff", "cat", "none"]}]
+    model.preprocess.params.num_norm: [suggest_categorical, {choices: [true, false]}]
+    model.preprocess.params.cat_emb_dim: [suggest_int, {low: 8, high: 128, log: False, step: 8}]
+    model.preprocess.params.num_emb_dim: [suggest_int, {low: 8, high: 128, log: False, step: 8}]
+
+    model.aggregation.name: [suggest_categorical, {choices: ["TakeLastHidden", "ValidHiddenMean"]}]

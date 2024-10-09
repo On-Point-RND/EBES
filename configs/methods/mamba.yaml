@@ -1,0 +1,73 @@
+method_name: mamba
+runner_name: SupervisedRunner
+
+loss:
+  name: CrossEntropy
+
+trainer:
+  ckpt_track_metric: ${main_metric}
+  metrics_on_train: true
+  patience: ${patience}
+  total_iters: 100_000
+
+model:
+  preprocess:
+    name: Batch2Seq
+    params:
+      cat_cardinalities: ${cc}
+      num_features: ${nn}
+      cat_emb_dim: 16
+      num_emb_dim: 16
+      time_process: "diff" # "diff" | "cat" | "none"
+      num_norm: true
+  encoder: 
+    name: MambaModel
+    params:
+      d_model: output_dim_from_prev
+      n_layer: 3 # can change
+      rms_norm: false # can change
+      residual_in_fp32: True # can change
+      fused_add_norm: false # can change
+      rescale_prenorm_residual: True # can change
+      n_residuals_per_layer: 1 # [1, 2]
+  aggregation:
+    name: ValidHiddenMean
+  head:
+    name: nn.Linear
+    params:
+      in_features: output_dim_from_prev
+      out_features: ${n_classes}
+
+optimizer:
+  name: Adam
+  params:
+    lr: 3.e-3
+    weight_decay: 1.e-4
+
+optuna:
+  params:
+    n_trials: 70
+    n_startup_trials: 5
+    request_list: 
+      - 'model.preprocess.params.cat_emb_dim': 128
+        'model.preprocess.params.num_emb_dim': 128
+        'model.preprocess.params.time_process': 'diff'
+        'model.preprocess.params.num_norm': true
+        'model.aggregation.name': "ValidHiddenMean"
+        'model.encoder.params.n_layer': 3
+        'model.encoder.params.rescale_prenorm_residual': true
+
+    target_metric: ${main_metric}
+  suggestions:
+    optimizer.params.weight_decay: [suggest_float, {low: 1.e-15, high: 1.e-3, log: True}]
+    optimizer.params.lr: [suggest_float, {low: 1.e-5, high: 1.e-1, log: True}]
+    
+    model.encoder.params.n_layer: [suggest_int, {low: 1, high: 3, log: False}]
+    model.encoder.params.rescale_prenorm_residual: [suggest_categorical, {choices: [true, false]}]
+
+    model.preprocess.params.time_process: [suggest_categorical, {choices: ["diff", "cat", "none"]}]
+    model.preprocess.params.num_norm: [suggest_categorical, {choices: [true, false]}]
+    model.preprocess.params.cat_emb_dim: [suggest_int, {low: 1, high: 128, log: False}]
+    model.preprocess.params.num_emb_dim: [suggest_int, {low: 1, high: 128, log: False}]
+
+    model.aggregation.name: [suggest_categorical, {choices: ["TakeLastHidden", "ValidHiddenMean"]}]

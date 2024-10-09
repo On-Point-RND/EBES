@@ -1,0 +1,105 @@
+method_name: coles
+runner_name: UnsupervisedRunner
+
+data:
+  loaders:
+    unsupervised_train:
+      split_idx: 0
+      preprocessing: contrastive_pipeline
+      batch_size: 128
+      drop_incomplete: true
+      shuffle: true
+      num_workers: 4
+      labeled: False
+    unsupervised_train_val:
+      split_idx: 1
+      preprocessing: contrastive_pipeline
+      batch_size: 128
+      num_workers: 4
+      labeled: False
+
+
+unsupervised_loss:
+  name: ContrastiveLoss
+  params: 
+    selector: HardNegativePairSelector
+    neg_count: 5
+    margin: 1
+unsupervised_metrics: null
+unsupervised_trainer:
+  ckpt_track_metric: loss
+  metrics_on_train: true
+  patience: ${patience}
+  total_iters: 100_000
+
+trainer:
+  ckpt_track_metric: ${main_metric}
+  metrics_on_train: true
+  patience: ${patience}
+  total_iters: 100_000
+
+unsupervised_model:
+  preprocess: ${model.preprocess}
+  encoder: ${model.encoder}
+  aggregation: ${model.aggregation}
+model:
+  preprocess:
+    name: Batch2Seq
+    params:
+      cat_cardinalities: ${cc}
+      num_features: ${nn}
+      cat_emb_dim: 118
+      num_emb_dim: 64
+      time_process: "cat" # "diff" | "cat" | "none"
+      num_norm: false
+  encoder: 
+    name: GRU
+    params:
+      input_size: output_dim_from_prev
+      hidden_size: 95
+      num_layers: 1
+  aggregation:
+    name: ValidHiddenMean
+  head:
+    name: nn.Linear
+    params:
+      in_features: output_dim_from_prev
+      out_features: ${n_classes}
+
+optimizer:
+  name: Adam
+  params:
+    lr: 1.e-3
+    weight_decay: 1.e-8
+
+optuna:
+  params:
+    n_trials: 70
+    n_startup_trials: 5
+    request_list: 
+      - 'optimizer.params.weight_decay': 1.e-08
+        'optimizer.params.lr': 1.e-3
+        'model.encoder.params.hidden_size': 800
+        'model.encoder.params.num_layers': 1
+        'model.encoder.params.dropout': 1.e-10
+        'model.preprocess.params.time_process': 'diff'
+        'model.preprocess.params.num_norm': True
+        'unsupervised_trainer.total_iters': 100_000
+    target_metric: ${main_metric}
+  suggestions:
+    optimizer.params.weight_decay: [suggest_float, {low: 1.e-10, high: 1.e-2, log: True}]
+    optimizer.params.lr: [suggest_float, {low: 1.e-5, high: 1.e-2, log: True}]
+
+    model.encoder.params.hidden_size: [suggest_int, {low: 30, high: 1200, log: True}]
+    model.encoder.params.num_layers: [suggest_int, {low: 1, high: 3, log: False}]
+    model.encoder.params.dropout: [suggest_float, {low: 1.e-10, high: 0.3, log: True}]
+
+    model.preprocess.params.time_process: [suggest_categorical, {choices: ["diff", "cat", "none"]}]
+    model.preprocess.params.num_norm: [suggest_categorical, {choices: [true, false]}]
+    model.preprocess.params.cat_emb_dim: [suggest_int, {low: 1, high: 128, log: False}]
+    model.preprocess.params.num_emb_dim: [suggest_int, {low: 1, high: 128, log: False}]
+
+    model.aggregation.name: [suggest_categorical, {choices: ["TakeLastHidden", "ValidHiddenMean"]}]
+
+    unsupervised_loss.params.margin: [suggest_float, {low: 0.2, high: 1, log: False}]
+    unsupervised_trainer.total_iters: [suggest_categorical, {choices: [0, 100_000]}]

@@ -1,0 +1,160 @@
+log_dir: log/physionet2012
+patience: 10
+n_classes: 2
+main_metric: MulticlassAUROC
+main_loss: 
+  name: nn.CrossEntropyLoss
+
+cc:
+  MechVent: 2
+  Gender: 4
+  ICUType: 5
+nn:
+  - Na
+  - Age
+  - TroponinT
+  - Platelets
+  - PaO2
+  - Albumin
+  - PaCO2
+  - RespRate
+  - WBC
+  - MAP
+  - ALP
+  - Creatinine
+  - Cholesterol
+  - HCT
+  - Temp
+  - Glucose
+  - HR
+  - Bilirubin
+  - GCS
+  - Height
+  - SysABP
+  - SaO2
+  - Mg
+  - NIMAP
+  - pH
+  - TroponinI
+  - AST
+  - NIDiasABP
+  - BUN
+  - DiasABP
+  - K
+  - NISysABP
+  - FiO2
+  - Weight
+  - Urine
+  - HCO3
+  - Lactate
+  - ALT
+
+data:
+  dataset:
+    parquet_path: "data/physionet2012/preprocessed/train"
+    random_split: true
+    split_seed: 42
+
+    split_sizes: 
+      - 0.7   # train
+      - 0.15  # train_val
+      - 0.15  # hpo_val
+
+  preprocessing:
+    common_pipeline: &common_pipeline
+      max_seq_len: 256
+      time_name: Time
+      index_name: RecordID
+      target_name: In-hospital_death
+      cat_cardinalities: ${cc}
+      num_names: ${nn}
+      batch_transforms:
+        - RescaleTime:
+            loc: 0.0
+            scale: 48.0
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - MaskValid
+        - ForwardFillNans:
+            backward: true
+        - FillNans:
+            fill_value: -1.0
+    contrastive_pipeline:
+      <<: *common_pipeline
+      batch_transforms:
+        - RescaleTime:
+            loc: 0.0
+            scale: 48.0
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - ForwardFillNans:
+            backward: true
+        - FillNans:
+            fill_value: -1.0
+        - ContrastiveTarget
+        - RandomSlices:
+            split_count: 5
+            cnt_min: 30
+            cnt_max: 100
+            short_seq_crop_rate: 0.8
+            seed: 0
+    primenet_pipeline:
+      <<: *common_pipeline
+      batch_transforms:
+        - RescaleTime:
+            loc: 0.0
+            scale: 48.0
+        - TimeToFeatures:
+            process_type: ${model.preprocess.params.time_process}
+        - MaskValid
+        - ForwardFillNans:
+            backward: true
+        - FillNans:
+            fill_value: -1.0
+        - PrimeNetSampler:
+            segment_num: 3
+
+
+  loaders:
+    train:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      drop_incomplete: true
+      shuffle: true
+      loop: false
+      num_workers: 4
+      random_seed: 42
+    full_train:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+    train_val:
+      split_idx: 1
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+    hpo_val:
+      split_idx: 2
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+
+test_data:
+  dataset:
+    parquet_path: "data/physionet2012/preprocessed/test"
+    split_sizes: 
+      - 1.0
+  preprocessing:
+    common_pipeline: *common_pipeline
+  loaders:
+    test:
+      split_idx: 0
+      preprocessing: common_pipeline
+      batch_size: 128
+      num_workers: 4
+
+metrics:
+  - name: ${main_metric}
+    params: {num_classes: 2}

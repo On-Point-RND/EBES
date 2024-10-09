@@ -1,0 +1,89 @@
+method_name: mlp
+runner_name: SupervisedRunner
+
+loss:
+  name: CrossEntropy
+
+trainer:
+  ckpt_track_metric: ${main_metric}
+  metrics_on_train: true
+  patience: ${patience}
+  total_iters: 100_000
+
+model:
+  preprocess:
+    name: Batch2Seq
+    params:
+      cat_cardinalities: ${cc}
+      num_features: ${nn}
+      cat_emb_dim: 16
+      num_emb_dim: 16
+      time_process: "diff" # "diff" | "cat" | "none"
+      num_norm: true
+  aggregation:
+    name: ValidHiddenMean
+  drop_0:
+    name: nn.Dropout
+    params:
+      p: 0.5
+  head_0:
+    name: nn.Linear
+    params:
+      in_features: output_dim_from_prev
+      out_features: 128
+  act_0:
+    name: nn.ReLU
+  drop_1:
+    name: nn.Dropout
+    params:
+      p: ${model.drop_0.params.p}
+  head_1:
+    name: nn.Linear
+    params:
+      in_features: ${model.head_0.params.out_features}
+      out_features: ${model.head_0.params.out_features}
+  act_1:
+    name: nn.ReLU
+  head_2:
+    name: nn.Linear
+    params:
+      in_features: ${model.head_0.params.out_features}
+      out_features: ${n_classes}
+
+optimizer:
+  name: Adam
+  params:
+    lr: 3.e-3
+    weight_decay: 1.e-4
+
+# lr_scheduler:
+#   name: StepLR
+#   params:
+#     step_size: 3
+#     gamma: 0.9025
+
+optuna:
+  params:
+    n_trials: 70
+    n_startup_trials: 3
+    request_list: 
+      - 'optimizer.params.weight_decay': 1.e-05
+        'optimizer.params.lr': 3.e-4
+        'model.encoder.params.hidden_size': 200
+        'model.encoder.params.num_layers': 1
+        'model.encoder.params.dropout': 1.e-10
+        'model.preprocess.params.time_process': 'diff'
+        'model.preprocess.params.num_norm': True
+    target_metric: ${main_metric}
+  suggestions:
+    optimizer.params.weight_decay: [suggest_float, {low: 1.e-15, high: 1.e-3, log: True}]
+    optimizer.params.lr: [suggest_float, {low: 1.e-5, high: 1.e-1, log: True}]
+    
+    model.head_0.params.out_features: [suggest_int, {low: 10, high: 1200, log: True}]
+    model.drop_0.params.p: [suggest_float, {low: 1.e-10, high: 0.8, log: True}]
+    
+    model.preprocess.params.time_process: [suggest_categorical, {choices: ["diff", "cat", "none"]}]
+    model.preprocess.params.num_norm: [suggest_categorical, {choices: [true, false]}]
+    model.preprocess.params.cat_emb_dim: [suggest_int, {low: 1, high: 128, log: False}]
+    model.preprocess.params.num_emb_dim: [suggest_int, {low: 1, high: 128, log: False}]
+    model.aggregation.name: [suggest_categorical, {choices: ["TakeLastHidden", "ValidHiddenMean"]}]
