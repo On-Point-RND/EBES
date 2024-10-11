@@ -18,4 +18,5 @@ pip install ebes
 
 
 
-[Performance of various models as a function of number of sequences. Metrics from Table 1 are reported. Number of sequences is presented in log scale. Standard deviation across 3 runs is depicted as vertical lines.](https://arxiv.org/html/2410.03399v1/x5.png)
+Performance of various models as a function of number of sequences. Metrics from Table 1 are reported. Number of sequences is presented in log scale. Standard deviation across 3 runs is depicted as vertical lines.
+<img src="https://arxiv.org/html/2410.03399v1/x5.png">
