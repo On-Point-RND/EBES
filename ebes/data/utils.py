@@ -33,6 +33,7 @@ def get_collator(
     target_name: str | list[str] | None = None,
     max_seq_len: int = 0,
     batch_transforms: list[Mapping[str, Any] | str] | None = None,
+    padding_type: str = "zeros",
 ) -> SequenceCollator:
 
     tfs = None
@@ -61,6 +62,7 @@ def get_collator(
         target_name=target_name,
         max_seq_len=max_seq_len,
         batch_transforms=tfs,
+        padding_type=padding_type,
     )
 
 
@@ -85,8 +87,7 @@ def get_loader(
     if labeled:
         labeled_query = f"`{collators[preprocessing].target_name}`.notna()"
         query = (labeled_query + " and " + query) if query else labeled_query
-    klass = SeriesDataset if loop else SizedSeriesDataset
-    ds = klass(
+    ds = SizedSeriesDataset(
         data,
         batch_size=batch_size,
         query=query,

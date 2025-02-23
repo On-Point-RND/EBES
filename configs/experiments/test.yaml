@@ -1,6 +1,6 @@
 run_name: "${method_name}/test"
 common_seed: 0
-device: "cuda:1"
+device: "cuda:0"
 
 runner:
   name: ${runner_name}

@@ -1,0 +1,16 @@
+optimizer:
+  params:
+    weight_decay: 6.056158296573125e-13
+    lr: 0.001345708783516171
+model:
+  encoder:
+    params:
+      emb_size: 56
+      dropout: 0.19689515487962103
+      num_heads: 2
+  preprocess:
+    params:
+      time_process: cat
+      num_norm: true
+      cat_emb_dim: 25
+      num_emb_dim: 9

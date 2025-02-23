@@ -114,7 +114,7 @@ class Runner(ABC):
         study.optimize(
             lambda trial: self._objective(trial, config, target_metric),
             n_trials=n_trials,
-            catch=(RuntimeError,),
+            catch=(RuntimeError, ValueError),
         )
         return study
 

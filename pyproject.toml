@@ -4,10 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ebes"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
   { name="Osin Dmitry", email="d.osin@skoltech.ru" },
-  { name="Igor Udovichenko", email="i.udovichenko@skoltech.ru" },
 ]
 description = "EBES: Easy Benchmarking for Event Sequences."
 readme = "README.md"
@@ -20,7 +19,6 @@ dependencies = [
     "torcheval==0.0.7",
     "omegaconf==2.3.0",
     "lightgbm==4.3.0",
-    "mamba_ssm==1.2.2",
     "torchcde==0.2.5",
 ]
 
@@ -104,6 +102,7 @@ exclude = [
     "dev",
     "experiments",
     "ebes/model/PrimeNet",
+    "ebes/model/convtran",
     ".ipynb_checkpoints",
     "cd.py",
 ]

@@ -39,6 +39,11 @@ coles_time_process:
   log/pendulum: cat
   log/x5: none
   log/mbd: cat
+  log/mimic3_regr: cat
+  log/arabic: diff
+  log/electric_devices: diff
+  log/bpi_17: cat
+  log/pendulum_cls: cat
 
 model:
   preprocess:

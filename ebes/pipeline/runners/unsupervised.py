@@ -1,4 +1,5 @@
 from collections.abc import Mapping
+import gc
 from pathlib import Path
 
 # from torch import nn
@@ -39,36 +40,17 @@ class UnsupervisedRunner(Runner):
         )
         trainer.run()
 
-        net = build_model(config["model"])
+        del loaders["unsupervised_train"]  # type: ignore
+        del loaders["unsupervised_train_val"]  # type: ignore
+        gc.collect()
 
+        net = build_model(config["model"])
         if config["unsupervised_trainer"]["total_iters"]:
             net.load_state_dict(
                 torch.load(trainer.best_checkpoint(), map_location="cpu")["model"],
                 strict=False,
             )
             net.eval()
-
-        # class Frozen(nn.Module):
-        #     def __init__(self, model, *args, **kwargs) -> None:
-        #         super().__init__(*args, **kwargs)
-        #         self.model = model
-        #         for param in model.parameters():
-        #             param.requires_grad = False
-        #         for param in model[-1].parameters():
-        #             param.requires_grad = True
-
-        #     def train(self, mode=True):
-        #         if not isinstance(mode, bool):
-        #             raise ValueError("training mode is expected to be boolean")
-        #         self.training = mode
-        #         for module in self.children():
-        #             module.train(False)
-        #         self.model[-1].train(mode)
-        #         return self
-
-        #     def forward(self, *args, **kwargs):
-        #         return self.model(*args, **kwargs)
-        # net = Frozen(net)
 
         opt = get_optimizer(net.parameters(), **config["optimizer"])
         metrics = get_metrics(config["metrics"], "cpu")
@@ -88,9 +70,13 @@ class UnsupervisedRunner(Runner):
         trainer.run()
         trainer.load_best_model()
 
+        del loaders["train"]  # type: ignore
         train_metrics = trainer.validate(loaders["full_train"])
+        del loaders["full_train"]  # type: ignore
         train_val_metrics = trainer.validate(loaders["train_val"])
+        del loaders["train_val"]  # type: ignore
         hpo_metrics = trainer.validate(loaders["hpo_val"])
+        del loaders["hpo_val"]  # type: ignore
         test_metrics = trainer.validate(test_loaders["test"])
 
         train_metrics = {"train_" + k: v for k, v in train_metrics.items()}

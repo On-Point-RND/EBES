@@ -4,6 +4,7 @@
 esbench/data/x5-retail
 log/
 INSPARATION_ARCHIVE/
+zhores/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

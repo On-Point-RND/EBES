@@ -11,3 +11,4 @@ from .neural_hawkes.clustering import NHClustering
 from .ncde.ncde import NCDE
 from .mtand import MTAND
 from .mlem.model import MLEMEncoder, MLEMPretrainer
+from .convtran.model import ConvTran

@@ -1,40 +1,45 @@
 # ignoring all issues with config keys
 # pyright: reportArgumentType=false
 
-from collections.abc import Mapping
-from typing import Any
-from pathlib import Path
 from argparse import ArgumentParser
+from collections.abc import Mapping
+from functools import partialmethod
 from itertools import count
+from pathlib import Path
+from typing import Any
 
 import pandas as pd
-from omegaconf import OmegaConf
 import torch
+from omegaconf import OmegaConf
+from tqdm import tqdm
 
 from ebes.data.utils import build_loaders
-from ebes.pipeline.utils import get_metrics
 from ebes.model import build_model
+from ebes.pipeline.utils import get_metrics
 from ebes.trainer import Trainer
 
-
 METRIC_FOR_DS = {
-    "mimic3": "MulticlassAUROC",
-    "physionet2012": "MulticlassAUROC",
-    "age": "MulticlassAccuracy",
-    "x5": "MulticlassAccuracy",
-    "pendulum": "R2Score",
-    "taobao": "MulticlassAUROC",
+    # "mimic3": "MulticlassAUROC",
+    # "physionet2012": "MulticlassAUROC",
+    # "age": "MulticlassAccuracy",
+    # "x5": "MulticlassAccuracy",
+    # "pendulum_cls": "MulticlassAccuracy",
+    # "taobao": "MulticlassAUROC",
     "mbd": "MultiLabelMeanAUROC",
+    # "arabic": "MulticlassAccuracy",
+    # "electric_devices": "MulticlassAccuracy",
+    # "bpi_17": "MulticlassAUROC",
 }
 METHODS = [
-    "mamba",
-    "gru",
-    "mlp",
-    "primenet",
-    "mtand",
-    "coles",
-    "mlem",
-    "transformer",
+    # "mamba",
+    # "gru",
+    # "mlp",
+    # "primenet",
+    # "mtand",
+    # "coles",
+    # "mlem",
+    # "transformer",
+    "convtran",
 ]
 
 
@@ -78,6 +83,7 @@ def eval_ablation(exp_dir: Path, which: str, device: str):
 
 
 if __name__ == "__main__":
+    tqdm.__init__ = partialmethod(tqdm.__init__, disable=True)  # type: ignore
     parser = ArgumentParser()
     parser.add_argument(
         "which", choices=["time", "permutation", "permutation_keep_last", "none"]
@@ -86,17 +92,18 @@ if __name__ == "__main__":
     parser.add_argument("--seeds", default="0,20")
     args = parser.parse_args()
 
-    smin, smax = args.seeds.split("-")
-    path = Path("log")
-    res_file = path / f"{args.which}_{smin}-{smax}.csv"
+    smin, smax = args.seeds.split(",")
+    smin, smax = int(smin), int(smax)
+    path = Path("log/")
+    res_file = path / "Ablations" / f"{args.which}_{smin}-{smax}.csv"
     for i in count(1):
         if not res_file.exists():
             break
-        res_file = path / f"{args.which}_{smin}-{smax}_{i}.csv"
+        res_file = path / "Ablations" / f"{args.which}_{smin}-{smax}_{i}.csv"
 
     rows = []
     for ds_dir in path.iterdir():
-        if not ds_dir.is_dir():
+        if not ds_dir.is_dir() or ds_dir.stem not in METRIC_FOR_DS:
             continue
         for method in METHODS:
             corr_dir = ds_dir / method / "correlation"

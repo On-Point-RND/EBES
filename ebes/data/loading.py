@@ -18,6 +18,7 @@ class SequenceCollator:
     target_name: str | list[str] | None = None
     max_seq_len: int = 0
     batch_transforms: list[Callable[[Batch], None]] | None = None
+    padding_type: str = "zeros"
 
     def __call__(self, seqs: Sequence[pd.Series]) -> Batch:
         ml = min(max(s["_seq_len"] for s in seqs), self.max_seq_len)  # type: ignore
@@ -60,14 +61,22 @@ class SequenceCollator:
                 for i, name in enumerate(num_names):
                     assert num_features is not None
                     num_features[:sl, b, i] = torch.tensor(s[name][-sl:])
-                    num_features[sl:, b, i] = torch.tensor(s[name][-1])
+                    num_features[sl:, b, i] = (
+                        torch.zeros(1)
+                        if self.padding_type == "zeros"
+                        else torch.tensor(s[name][-1])
+                    )
 
             for i, (name, card) in enumerate(cat_cardinalities.items()):
                 assert cat_features is not None
                 cat_features[:sl, b, i] = torch.tensor(s[name][-sl:]).clamp_(
                     max=card - 1
                 )
-                cat_features[sl:, b, i] = torch.tensor(s[name][-1]).clamp_(max=card - 1)
+                cat_features[sl:, b, i] = (
+                    torch.zeros(1)
+                    if self.padding_type == "zeros"
+                    else torch.tensor(s[name][-1]).clamp_(max=card - 1)
+                )
 
             if indices is not None:
                 indices.append(s[self.index_name])
@@ -83,11 +92,17 @@ class SequenceCollator:
                 else:
                     target_padded = np.zeros(ml)
                     target_padded[:sl] = target[-sl:]
-                    target_padded[sl:] = target[-1]
+                    target_padded[sl:] = (
+                        torch.zeros(1) if self.padding_type == "zeros" else target[-1]
+                    )
                     targets.append(target_padded)
 
             times[:sl, b] = s[self.time_name][-sl:]
-            times[sl:, b] = s[self.time_name][-1]
+            times[sl:, b] = (
+                torch.zeros(1)
+                if self.padding_type == "zeros"
+                else s[self.time_name][-1]
+            )
 
         index = np.asanyarray(indices)
         if targets is not None:

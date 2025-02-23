@@ -1,0 +1,67 @@
+method_name: convtran
+runner_name: SupervisedRunner
+
+loss:
+  name: CrossEntropy
+
+trainer:
+  ckpt_track_metric: ${main_metric}
+  metrics_on_train: true
+  patience: ${patience}
+  total_iters: 100_000
+
+model:
+  preprocess:
+    name: Batch2Seq
+    params:
+      cat_cardinalities: ${cc}
+      num_features: ${nn}
+      cat_emb_dim: 5
+      num_emb_dim: 5
+      time_process: "diff" # "diff" | "cat" | "none"
+      num_norm: False
+  encoder: 
+    name: ConvTran
+    params:
+      channel_size: output_dim_from_prev
+      seq_len: ${data.preprocessing.common_pipeline.max_seq_len}
+      num_classes: ${n_classes}
+      emb_size: 64 # According to paper, but default in code = 16
+      num_heads: 8
+      dropout: 0.01
+optimizer:
+  name: Adam
+  params:
+    lr: 3.e-3
+    weight_decay: 1.e-4
+
+optuna:
+  params:
+    n_trials: 70
+    n_startup_trials: 3
+    request_list: 
+      - 'optimizer.params.weight_decay': 1.e-05
+        'optimizer.params.lr': 3.e-4
+
+        'model.encoder.params.emb_size': 64
+        'model.encoder.params.dropout': 0.01
+        'model.encoder.params.num_heads': 8
+
+        'model.preprocess.params.cat_emb_dim': 1
+        'model.preprocess.params.num_emb_dim': 1
+        'model.preprocess.params.time_process': 'none'
+        'model.preprocess.params.num_norm': False
+    target_metric: ${main_metric}
+  suggestions:
+    optimizer.params.weight_decay: [suggest_float, {low: 1.e-15, high: 1.e-3, log: True}]
+    optimizer.params.lr: [suggest_float, {low: 1.e-5, high: 1.e-1, log: True}]
+
+    model.encoder.params.emb_size: [suggest_int, {low: 8, high: 96, log: False, step: 8}]
+    model.encoder.params.dropout: [suggest_float, {low: 0, high: 0.2, log: False}]
+    model.encoder.params.num_heads: [suggest_categorical, {choices: [1, 2, 4, 8]}]
+    # model.encoder.params.pos_enc_type: [suggest_categorical, {choices: ["base", "cat", "learned", "none"]}]
+    
+    model.preprocess.params.time_process: [suggest_categorical, {choices: ["diff", "cat", "none"]}]
+    model.preprocess.params.num_norm: [suggest_categorical, {choices: [true, false]}]
+    model.preprocess.params.cat_emb_dim: [suggest_int, {low: 1, high: 64, log: False, step: 8}]
+    model.preprocess.params.num_emb_dim: [suggest_int, {low: 1, high: 64, log: False, step: 8}]

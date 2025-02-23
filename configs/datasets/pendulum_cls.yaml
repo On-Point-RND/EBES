@@ -1,16 +1,16 @@
-log_dir: log/pendulum
+log_dir: log/pendulum_cls
 patience: 10
-n_classes: 1
-main_metric: NegRootMeanSquaredError
+n_classes: 10
+main_metric: MulticlassAccuracy
 main_loss: 
-  name: nn.MSELoss
+  name: nn.CrossEntropyLoss
 
 nn: [x, y]
 cc:
 
 data:
   dataset:
-    parquet_path: "data/pendulum/preprocessed/train"
+    parquet_path: "data/pendulum_cls/preprocessed/train"
     random_split: true
     split_seed: 42
 
@@ -21,7 +21,7 @@ data:
 
   preprocessing:
     common_pipeline: &common_pipeline
-      max_seq_len: 256
+      max_seq_len: 86
       time_name: time
       index_name: id
       target_name: target
@@ -37,7 +37,6 @@ data:
             backward: true
         - FillNans:
             fill_value: -1.0
-        - UnsqueezeTarget
     contrastive_pipeline:
       <<: *common_pipeline
       batch_transforms:
@@ -73,7 +72,7 @@ data:
             fill_value: -1.0
         - PrimeNetSampler:
             segment_num: 3
-        - UnsqueezeTarget
+
 
   loaders:
     train:
@@ -102,7 +101,7 @@ data:
 
 test_data:
   dataset:
-    parquet_path: "data/pendulum/preprocessed/test"
+    parquet_path: "data/pendulum_cls/preprocessed/test"
     split_sizes: 
       - 1.0
   preprocessing:
@@ -116,4 +115,6 @@ test_data:
 
 metrics:
   - name: ${main_metric}
-  - name: R2Score
+    params: 
+      num_classes: ${n_classes}
+

@@ -267,11 +267,13 @@ class Trainer:
         losses: list[float] = []
 
         total_iters = iters
-        if hasattr(self._train_loader, "dataset") and isinstance(
-            self._train_loader.dataset, Sized  # type: ignore
+        if (
+            hasattr(self._train_loader, "dataset")
+            and isinstance(self._train_loader.dataset, Sized)  # type: ignore
+            and (total_iters > len(self._train_loader))  # type: ignore
         ):
-            total_iters = min(total_iters, len(self._train_loader))  # type: ignore
-        pbar = tqdm(zip(self._train_loader, range(iters)), total=total_iters)
+            total_iters = len(self._train_loader)  # type: ignore
+        pbar = tqdm(zip(self._train_loader, range(total_iters)), total=total_iters)
 
         pbar.set_description_str(f"Epoch {self._last_epoch + 1: 3}")
         for batch, i in LoadTime(pbar, disable=pbar.disable):
@@ -281,6 +283,9 @@ class Trainer:
 
             pred = self._model(inp)
             loss = self._loss(pred, gt)
+            if torch.isnan(loss).any():
+                raise ValueError("None detected in loss. Terminating training.")
+
             loss.backward()
 
             self._metrics["loss"].update(loss.detach().cpu())

@@ -62,7 +62,7 @@ data:
 
   preprocessing:
     common_pipeline: &common_pipeline
-      max_seq_len: 256
+      max_seq_len: 203
       time_name: Time
       index_name: RecordID
       target_name: In-hospital_death

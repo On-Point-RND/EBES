@@ -71,7 +71,8 @@ def create_sample(length):
     et = np.random.uniform(et_min, et_max)
     mu = mean_n * (1 - alpha) / (et - st - 1)
 
-    b = np.random.uniform(1, 3)
+    target = int(np.random.choice(10, 1)[0])
+    b = np.linspace(1, 3, 10)[target]  # np.random.uniform(1, 3)
 
     t_span = [st, et + ts]
 
@@ -88,7 +89,7 @@ def create_sample(length):
     x = np.sin(theta1)
     y = -np.cos(theta1)
 
-    return x, y, t_ir, b
+    return x, y, t_ir, target
 
 
 def noise_sequence(x, y):
@@ -112,7 +113,7 @@ def create_dataset(size):
     schema = StructType(
         [
             StructField("id", LongType()),
-            StructField("target", FloatType()),
+            StructField("target", LongType()),
             StructField("x", ArrayType(FloatType())),
             StructField("y", ArrayType(FloatType())),
             StructField("time", ArrayType(FloatType())),

@@ -1,0 +1,28 @@
+run_name: "${method_name}/optuna_scale_0.114"
+patience: 10
+common_seed: 0
+device: "cuda:0"
+
+runner:
+  name: ${runner_name}
+  run_type: optuna
+  seed_keys:
+    - "common_seed"
+    - "data.loaders.train.random_seed"
+    - "data.dataset.split_seed"
+  params:
+    n_runs: 1
+    n_workers: 3
+  device_list:
+
+logging:
+  file_lvl: info
+  cons_lvl: info
+
+# OVERWRITE
+data:
+  dataset:
+    split_sizes:
+      - 0.0798  # train
+      - 0.0171 # train_val
+      - 0.0171  # hpo_val
