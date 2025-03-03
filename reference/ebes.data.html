@@ -1,0 +1,620 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebes.data package &mdash; EBES  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebes.losses package" href="ebes.losses.html" />
+    <link rel="prev" title="ebes package" href="ebes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBES
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html"> Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html"> Quick start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/design.html"> Benchmark design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data_format.html"> Data format used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/configs.html"> Configuration files format</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html"> Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="ebes.html">ebes package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="ebes.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ebes.data package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.losses.html">ebes.losses package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html">ebes.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html">ebes.model package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.pipeline.html">ebes.pipeline package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.utils.html">ebes.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#ebes-trainer-module">ebes.trainer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes.types">ebes.types module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBES</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">ebes</a></li>
+          <li class="breadcrumb-item"><a href="ebes.html">ebes package</a></li>
+      <li class="breadcrumb-item active">ebes.data package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/ebes.data.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ebes-data-package">
+<h1>ebes.data package<a class="headerlink" href="#ebes-data-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-ebes.data.accessors">
+<span id="ebes-data-accessors-module"></span><h2>ebes.data.accessors module<a class="headerlink" href="#module-ebes.data.accessors" title="Link to this heading"></a></h2>
+<p>The module contains classes that expose a pd.DataFrame interface to datasets.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.accessors.InMemoryPandasDataAccessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.accessors.</span></span><span class="sig-name descname"><span class="pre">InMemoryPandasDataAccessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parquet_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_sizes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_queries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_by_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.accessors.InMemoryPandasDataAccessor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.accessors.PandasDataAccessor" title="ebes.data.accessors.PandasDataAccessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">PandasDataAccessor</span></code></a></p>
+<p>Data accessor that keeps all data in memory.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.data.accessors.InMemoryPandasDataAccessor.get_split">
+<span class="sig-name descname"><span class="pre">get_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split_idx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.accessors.InMemoryPandasDataAccessor.get_split" title="Link to this definition"></a></dt>
+<dd><p>Get split by its index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>split_idx</strong> – positive index of split.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dataframe or a sequence of dataframes with data in given split.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.accessors.PandasDataAccessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.accessors.</span></span><span class="sig-name descname"><span class="pre">PandasDataAccessor</span></span><a class="headerlink" href="#ebes.data.accessors.PandasDataAccessor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract class for all data accessors.</p>
+<p>Data accessor is responsible for splitting the data on train/test/whatever,
+filtering the data and exposing pd.DataFrame interface to it. The splits are
+configred in subclass <cite>__init__</cite> methods and accessed by their index. Each subclass
+splits the data (using any specified strategy) and returns a split by its positive
+index as a result of the <cite>get_split</cite> method.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.data.accessors.PandasDataAccessor.get_split">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split_idx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.accessors.PandasDataAccessor.get_split" title="Link to this definition"></a></dt>
+<dd><p>Get split by its index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>split_idx</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – positive index of split.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dataframe or a sequence of dataframes with data in given split.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ebes.data.batch_tfs">
+<span id="ebes-data-batch-tfs-module"></span><h2>ebes.data.batch_tfs module<a class="headerlink" href="#module-ebes.data.batch_tfs" title="Link to this heading"></a></h2>
+<p>Batch transforms for data loading pipelines.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.BatchTransform">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">BatchTransform</span></span><a class="headerlink" href="#ebes.data.batch_tfs.BatchTransform" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Base class for all batch transforms.</p>
+<p>The BatchTransform is a Callable object that modifies Batch in-place.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.CatToNum">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">CatToNum</span></span><a class="headerlink" href="#ebes.data.batch_tfs.CatToNum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Process categorical features as numerical.</p>
+<p>Treat categorical features as numerical (just type cast). Category 0 is converted
+to NaN value.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.ContrastiveTarget">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">ContrastiveTarget</span></span><a class="headerlink" href="#ebes.data.batch_tfs.ContrastiveTarget" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Set target for contrastive losses.</p>
+<p>New target is LongTensor such that items with different indices have different
+target labels.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.DatetimeToFloat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">DatetimeToFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.batch_tfs.DatetimeToFloat" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Cast time from np.datetime64 to float by rescale.
+scale:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.DatetimeToFloat.loc">
+<span class="sig-name descname"><span class="pre">loc</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> <span class="pre">|</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime64</span></code></em><a class="headerlink" href="#ebes.data.batch_tfs.DatetimeToFloat.loc" title="Link to this definition"></a></dt>
+<dd><p>Location to subtract. If string is passed, it is converted to <code class="docutils literal notranslate"><span class="pre">np.datetime64</span></code>
+beforehand.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.DatetimeToFloat.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code><span class="pre">,</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span> <span class="pre">|</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">timedelta64</span></code></em><a class="headerlink" href="#ebes.data.batch_tfs.DatetimeToFloat.scale" title="Link to this definition"></a></dt>
+<dd><p>Scale to divide time by. If tuple is passed, it is passed to the <code class="docutils literal notranslate"><span class="pre">np.timedelta64</span></code>
+function. The first item is a value and the second is a unit.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.FillNans">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">FillNans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fill_value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.batch_tfs.FillNans" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Fill NaNs with specified values.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.FillNans.fill_value">
+<span class="sig-name descname"><span class="pre">fill_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">,</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code><span class="pre">]</span> <span class="pre">|</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></em><a class="headerlink" href="#ebes.data.batch_tfs.FillNans.fill_value" title="Link to this definition"></a></dt>
+<dd><p>If float, all NaNs in all numerical features will be replaced with the
+<code class="docutils literal notranslate"><span class="pre">fill_value</span></code>. Mapping sets feature-specific replacement values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.ForwardFillNans">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">ForwardFillNans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backward</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.batch_tfs.ForwardFillNans" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Fill NaN values by propagating forwad lase non-nan values.</p>
+<p>The algoritm starts from the second step. If some values are NaNs, the values from
+the prevoius step are used to fill them. If the first time step contains NaNs, some
+NaNs will not be filled after the forward pass. To handle it <code class="docutils literal notranslate"><span class="pre">backward=True</span></code> might
+be specified to fill remaining NaN values from last to first after the forwad pass.
+But even after a backward pass the batch may contain NaNs, if some feature has all
+NaN values. To fill it use <code class="docutils literal notranslate"><span class="pre">FillNans</span></code> transform.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.ForwardFillNans.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#ebes.data.batch_tfs.ForwardFillNans.backward" title="Link to this definition"></a></dt>
+<dd><p>Wether to do backward fill after the forwad fill (see the class description).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.Logarithm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">Logarithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.batch_tfs.Logarithm" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Apply natural logarithm to specific feature.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.Logarithm.names">
+<span class="sig-name descname"><span class="pre">names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span></em><a class="headerlink" href="#ebes.data.batch_tfs.Logarithm.names" title="Link to this definition"></a></dt>
+<dd><p>Feature names to transform by taking the logarithm.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.MaskValid">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">MaskValid</span></span><a class="headerlink" href="#ebes.data.batch_tfs.MaskValid" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Add mask indicating valid values to batch.</p>
+<p>Mask has shape (max_seq_len, batch_size, n_features) and has True values where there
+are non-NaN values (nonzero category) and where the data is not padded.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.PrimeNetSampler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">PrimeNetSampler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask_ratio_per_seg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segment_num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pretrain_tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full2'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.batch_tfs.PrimeNetSampler" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Contrastive sampling according to PrimeNet.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><p>batch: Batch. Masks required.</p>
+</dd>
+</dl>
+<p>batch.num_features (T, B, D) -&gt; (T, 2B, D)
+batch.cat_features (T, B, D) -&gt; (T, 2B, D)</p>
+<p>Masks have additional dim for constrastive and interpolation:
+batch.num_mask (T, B, D) - &gt; (T, 2B, D, 2)
+batch.cat_mask (T, B, D) - &gt; (T, 2B, D, 2)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.PrimeNetSampler.dense_sampling_bound">
+<span class="sig-name descname"><span class="pre">dense_sampling_bound</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[0.4,</span> <span class="pre">0.6]</span></em><a class="headerlink" href="#ebes.data.batch_tfs.PrimeNetSampler.dense_sampling_bound" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.PrimeNetSampler.len_sampling_bound">
+<span class="sig-name descname"><span class="pre">len_sampling_bound</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[0.3,</span> <span class="pre">0.7]</span></em><a class="headerlink" href="#ebes.data.batch_tfs.PrimeNetSampler.len_sampling_bound" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.PrimeNetSampler.mask_ratio_per_seg">
+<span class="sig-name descname"><span class="pre">mask_ratio_per_seg</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.05</span></em><a class="headerlink" href="#ebes.data.batch_tfs.PrimeNetSampler.mask_ratio_per_seg" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.PrimeNetSampler.pretrain_tasks">
+<span class="sig-name descname"><span class="pre">pretrain_tasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'full2'</span></em><a class="headerlink" href="#ebes.data.batch_tfs.PrimeNetSampler.pretrain_tasks" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.PrimeNetSampler.segment_num">
+<span class="sig-name descname"><span class="pre">segment_num</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#ebes.data.batch_tfs.PrimeNetSampler.segment_num" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.RandomEventsPermutation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">RandomEventsPermutation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep_last</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.batch_tfs.RandomEventsPermutation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Permute events in sequence randomly.</p>
+<p>Time, target and masks are left unchanged.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.RandomEventsPermutation.keep_last">
+<span class="sig-name descname"><span class="pre">keep_last</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#ebes.data.batch_tfs.RandomEventsPermutation.keep_last" title="Link to this definition"></a></dt>
+<dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> the last event remains on its place, other are permuted.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.RandomSlices">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">RandomSlices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cnt_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cnt_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_seq_crop_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.batch_tfs.RandomSlices" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Sample random slices from input sequences.</p>
+<p>The transform is taken from <a class="reference external" href="https://github.com/dllllb/coles-paper">https://github.com/dllllb/coles-paper</a>. It samples random
+slices from initial sequences. The batch size after this transform will be
+<code class="docutils literal notranslate"><span class="pre">split_count</span></code> times larger.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.RandomSlices.cnt_max">
+<span class="sig-name descname"><span class="pre">cnt_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#ebes.data.batch_tfs.RandomSlices.cnt_max" title="Link to this definition"></a></dt>
+<dd><p>Maximal sample sequence length.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.RandomSlices.cnt_min">
+<span class="sig-name descname"><span class="pre">cnt_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#ebes.data.batch_tfs.RandomSlices.cnt_min" title="Link to this definition"></a></dt>
+<dd><p>Minimal sample sequence length.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.RandomSlices.seed">
+<span class="sig-name descname"><span class="pre">seed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.data.batch_tfs.RandomSlices.seed" title="Link to this definition"></a></dt>
+<dd><p>Value to seed the random generator.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.RandomSlices.short_seq_crop_rate">
+<span class="sig-name descname"><span class="pre">short_seq_crop_rate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1.0</span></em><a class="headerlink" href="#ebes.data.batch_tfs.RandomSlices.short_seq_crop_rate" title="Link to this definition"></a></dt>
+<dd><p>Must be from (0, 1]. If <code class="docutils literal notranslate"><span class="pre">short_seq_crop_rate</span></code> &lt; 1, and if a
+sequence of length less than cnt_min is encountered, the mininum sample
+length for this sequence is set as a <code class="docutils literal notranslate"><span class="pre">short_seq_crop_rate</span></code> time the actual
+sequence length.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.RandomSlices.split_count">
+<span class="sig-name descname"><span class="pre">split_count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#ebes.data.batch_tfs.RandomSlices.split_count" title="Link to this definition"></a></dt>
+<dd><p>How many sample slices to draw for each input sequence.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.RandomTime">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">RandomTime</span></span><a class="headerlink" href="#ebes.data.batch_tfs.RandomTime" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Replace time with uniformly disributed values.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.Rescale">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">Rescale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.batch_tfs.Rescale" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Rescale feature: subtract location and divide by scale.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.Rescale.loc">
+<span class="sig-name descname"><span class="pre">loc</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></em><a class="headerlink" href="#ebes.data.batch_tfs.Rescale.loc" title="Link to this definition"></a></dt>
+<dd><p>Value to subtract from the feature values.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.Rescale.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#ebes.data.batch_tfs.Rescale.name" title="Link to this definition"></a></dt>
+<dd><p>Feature name.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.Rescale.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></em><a class="headerlink" href="#ebes.data.batch_tfs.Rescale.scale" title="Link to this definition"></a></dt>
+<dd><p>Value to divide by the feature values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.RescaleTime">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">RescaleTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.batch_tfs.RescaleTime" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Rescale time: subtract location and divide by scale.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.RescaleTime.loc">
+<span class="sig-name descname"><span class="pre">loc</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></em><a class="headerlink" href="#ebes.data.batch_tfs.RescaleTime.loc" title="Link to this definition"></a></dt>
+<dd><p>Location to subtract from time.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.RescaleTime.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></em><a class="headerlink" href="#ebes.data.batch_tfs.RescaleTime.scale" title="Link to this definition"></a></dt>
+<dd><p>Scale to divide time by.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.TargetToLong">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">TargetToLong</span></span><a class="headerlink" href="#ebes.data.batch_tfs.TargetToLong" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Cast target to LongTensor</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.TimeToFeatures">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">TimeToFeatures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.batch_tfs.TimeToFeatures" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Add time to numerical features.</p>
+<p>To apply this transform first cast time to Tensor.
+Has to be applied BEFORE mask creation. And AFTER DatetoTime</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.TimeToFeatures.process_type">
+<span class="sig-name descname"><span class="pre">process_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code><span class="pre">[</span><code class="docutils literal notranslate"><span class="pre">'cat'</span></code><span class="pre">,</span> <code class="docutils literal notranslate"><span class="pre">'diff'</span></code><span class="pre">,</span> <code class="docutils literal notranslate"><span class="pre">'none'</span></code><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'none'</span></em><a class="headerlink" href="#ebes.data.batch_tfs.TimeToFeatures.process_type" title="Link to this definition"></a></dt>
+<dd><p>How to add time to features. The options are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;cat&quot;</span></code> — add absolute time to other numerical features,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;diff&quot;</span></code> — add time intervals between sequential events. In this case the
+first interval in a sequence equals zero.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;none&quot;</span></code> — do not add time to features. This option is added for the ease of
+optuna usage.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.TimeToFeatures.time_name">
+<span class="sig-name descname"><span class="pre">time_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'time'</span></em><a class="headerlink" href="#ebes.data.batch_tfs.TimeToFeatures.time_name" title="Link to this definition"></a></dt>
+<dd><p>Name of new feature with time, default <code class="docutils literal notranslate"><span class="pre">&quot;time&quot;</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.batch_tfs.UnsqueezeTarget">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.batch_tfs.</span></span><span class="sig-name descname"><span class="pre">UnsqueezeTarget</span></span><a class="headerlink" href="#ebes.data.batch_tfs.UnsqueezeTarget" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.batch_tfs.BatchTransform" title="ebes.data.batch_tfs.BatchTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></p>
+<p>Unsqueeze last dimension in target array.</p>
+<p>Last linear layer for regression task produces tensors of shape (bs, 1). When
+calling MSE loss with target of shape (bs,), PyTorch expands it to the shape
+(bs, bs) and loss is computed incorrectly. This batch transform reshapes the target
+to (bs, 1), so MSE loss is computed correctly.</p>
+</dd></dl>
+
+</section>
+<section id="module-ebes.data.datasets">
+<span id="ebes-data-datasets-module"></span><h2>ebes.data.datasets module<a class="headerlink" href="#module-ebes.data.datasets" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.datasets.SeriesDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.datasets.</span></span><span class="sig-name descname"><span class="pre">SeriesDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_incomplete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.datasets.SeriesDataset" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IterableDataset</span></code></p>
+<p>An iterable dataset over the DataFrame rows.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.datasets.SizedSeriesDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.datasets.</span></span><span class="sig-name descname"><span class="pre">SizedSeriesDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_incomplete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.datasets.SizedSeriesDataset" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.data.datasets.SeriesDataset" title="ebes.data.datasets.SeriesDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">SeriesDataset</span></code></a></p>
+<p>The same as SeriesDataset, but has __len__ method implemented.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.data.datasets.series">
+<span class="sig-prename descclassname"><span class="pre">ebes.data.datasets.</span></span><span class="sig-name descname"><span class="pre">series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.datasets.series" title="Link to this definition"></a></dt>
+<dd><p>Return list of DataFrame rows as a series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Series</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-ebes.data.loading">
+<span id="ebes-data-loading-module"></span><h2>ebes.data.loading module<a class="headerlink" href="#module-ebes.data.loading" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.data.loading.SequenceCollator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.data.loading.</span></span><span class="sig-name descname"><span class="pre">SequenceCollator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_cardinalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_seq_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_transforms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.loading.SequenceCollator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.loading.SequenceCollator.batch_transforms">
+<span class="sig-name descname"><span class="pre">batch_transforms</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">Callable</span></code><span class="pre">[[</span><a class="reference internal" href="ebes.html#ebes.types.Batch" title="ebes.types.Batch"><code class="xref py py-class docutils literal notranslate"><span class="pre">Batch</span></code></a><span class="pre">],</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code><span class="pre">]]</span> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.data.loading.SequenceCollator.batch_transforms" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.loading.SequenceCollator.cat_cardinalities">
+<span class="sig-name descname"><span class="pre">cat_cardinalities</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">,</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code><span class="pre">]</span> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.data.loading.SequenceCollator.cat_cardinalities" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.loading.SequenceCollator.index_name">
+<span class="sig-name descname"><span class="pre">index_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.data.loading.SequenceCollator.index_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.loading.SequenceCollator.max_seq_len">
+<span class="sig-name descname"><span class="pre">max_seq_len</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#ebes.data.loading.SequenceCollator.max_seq_len" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.loading.SequenceCollator.num_names">
+<span class="sig-name descname"><span class="pre">num_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.data.loading.SequenceCollator.num_names" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.loading.SequenceCollator.padding_type">
+<span class="sig-name descname"><span class="pre">padding_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'zeros'</span></em><a class="headerlink" href="#ebes.data.loading.SequenceCollator.padding_type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.loading.SequenceCollator.target_name">
+<span class="sig-name descname"><span class="pre">target_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> <span class="pre">|</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.data.loading.SequenceCollator.target_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.data.loading.SequenceCollator.time_name">
+<span class="sig-name descname"><span class="pre">time_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><a class="headerlink" href="#ebes.data.loading.SequenceCollator.time_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ebes.data.utils">
+<span id="ebes-data-utils-module"></span><h2>ebes.data.utils module<a class="headerlink" href="#module-ebes.data.utils" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.data.utils.build_loaders">
+<span class="sig-prename descclassname"><span class="pre">ebes.data.utils.</span></span><span class="sig-name descname"><span class="pre">build_loaders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loaders</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocessing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.utils.build_loaders" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.data.utils.get_accessor">
+<span class="sig-prename descclassname"><span class="pre">ebes.data.utils.</span></span><span class="sig-name descname"><span class="pre">get_accessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parquet_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_sizes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_by_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.utils.get_accessor" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.data.utils.get_collator">
+<span class="sig-prename descclassname"><span class="pre">ebes.data.utils.</span></span><span class="sig-name descname"><span class="pre">get_collator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_cardinalities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_seq_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_transforms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.utils.get_collator" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ebes.data.loading.SequenceCollator" title="ebes.data.loading.SequenceCollator"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceCollator</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.data.utils.get_loader">
+<span class="sig-prename descclassname"><span class="pre">ebes.data.utils.</span></span><span class="sig-name descname"><span class="pre">get_loader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">accessor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocessing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_incomplete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labeled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.data.utils.get_loader" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-ebes.data">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ebes.data" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebes.html" class="btn btn-neutral float-left" title="ebes package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebes.losses.html" class="btn btn-neutral float-right" title="ebes.losses package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Dmitry Osin, Igor Udovichenko.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

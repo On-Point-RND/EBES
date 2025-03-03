@@ -1,0 +1,438 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebes.metrics package &mdash; EBES  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebes.model package" href="ebes.model.html" />
+    <link rel="prev" title="ebes.losses package" href="ebes.losses.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBES
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html"> Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html"> Quick start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/design.html"> Benchmark design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data_format.html"> Data format used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/configs.html"> Configuration files format</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html"> Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="ebes.html">ebes package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="ebes.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html">ebes.data package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.losses.html">ebes.losses package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ebes.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html">ebes.model package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.pipeline.html">ebes.pipeline package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.utils.html">ebes.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#ebes-trainer-module">ebes.trainer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes.types">ebes.types module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBES</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">ebes</a></li>
+          <li class="breadcrumb-item"><a href="ebes.html">ebes package</a></li>
+      <li class="breadcrumb-item active">ebes.metrics package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/ebes.metrics.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ebes-metrics-package">
+<h1>ebes.metrics package<a class="headerlink" href="#ebes-metrics-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-ebes.metrics.custom">
+<span id="ebes-metrics-custom-module"></span><h2>ebes.metrics.custom module<a class="headerlink" href="#module-ebes.metrics.custom" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.metrics.custom.LoggingMetric">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.metrics.custom.</span></span><span class="sig-name descname"><span class="pre">LoggingMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">__</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.LoggingMetric" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.custom.LoggingMetric.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.LoggingMetric.compute" title="Link to this definition"></a></dt>
+<dd><p>Implement this method to compute and return the final metric value
+from state variables.</p>
+<p>Decorate compute() with &#64;torch.inference_mode() which gives better
+performance by disabling view tracking.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.custom.LoggingMetric.merge_state">
+<span class="sig-name descname"><span class="pre">merge_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.LoggingMetric.merge_state" title="Link to this definition"></a></dt>
+<dd><p>Implement this method to update the current metric’s state variables
+to be the merged states of the current metric and input metrics. The state
+variables of input metrics should stay unchanged.</p>
+<p>Decorate merge_state() with &#64;torch.inference_mode() which gives better
+performance by disabling view tracking.</p>
+<p><code class="docutils literal notranslate"><span class="pre">self.merge_state</span></code> might change the size/shape of state variables.
+Make sure <code class="docutils literal notranslate"><span class="pre">self.update</span></code> and <code class="docutils literal notranslate"><span class="pre">self.compute</span></code> can still be called
+without exceptions when state variables are merged.</p>
+<p>This method can be used as a building block for syncing metric states
+in distributed training. For example, <code class="docutils literal notranslate"><span class="pre">sync_and_compute</span></code> in the metric
+toolkit will use this method to merge metric objects gathered from the
+process group.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.custom.LoggingMetric.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.LoggingMetric.update" title="Link to this definition"></a></dt>
+<dd><p>Implement this method to update the state variables of your metric class.</p>
+<p>Decorate update() with &#64;torch.inference_mode() which gives better
+performance by disabling view tracking.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.metrics.custom.MLEM_reconstruction_loss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.metrics.custom.</span></span><span class="sig-name descname"><span class="pre">MLEM_reconstruction_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">__</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.MLEM_reconstruction_loss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.metrics.custom.LoggingMetric" title="ebes.metrics.custom.LoggingMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoggingMetric</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.metrics.custom.MLEM_sparcity_loss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.metrics.custom.</span></span><span class="sig-name descname"><span class="pre">MLEM_sparcity_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">__</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.MLEM_sparcity_loss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.metrics.custom.LoggingMetric" title="ebes.metrics.custom.LoggingMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoggingMetric</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.metrics.custom.MLEM_total_CE_loss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.metrics.custom.</span></span><span class="sig-name descname"><span class="pre">MLEM_total_CE_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">__</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.MLEM_total_CE_loss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.metrics.custom.LoggingMetric" title="ebes.metrics.custom.LoggingMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoggingMetric</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.metrics.custom.MLEM_total_mse_loss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.metrics.custom.</span></span><span class="sig-name descname"><span class="pre">MLEM_total_mse_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">__</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.MLEM_total_mse_loss" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.metrics.custom.LoggingMetric" title="ebes.metrics.custom.LoggingMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoggingMetric</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.metrics.custom.MultiLabelMeanAUROC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.metrics.custom.</span></span><span class="sig-name descname"><span class="pre">MultiLabelMeanAUROC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_fbgemm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.MultiLabelMeanAUROC" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryAUROC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.custom.MultiLabelMeanAUROC.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.MultiLabelMeanAUROC.compute" title="Link to this definition"></a></dt>
+<dd><p>Return AUROC.  If no <code class="docutils literal notranslate"><span class="pre">update()</span></code> calls are made before
+<code class="docutils literal notranslate"><span class="pre">compute()</span></code> is called, return an empty tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The return value of AUROC for each task (num_tasks,).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.custom.MultiLabelMeanAUROC.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.MultiLabelMeanAUROC.update" title="Link to this definition"></a></dt>
+<dd><p>Update states with the ground truth labels and predictions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>Tensor</em>) – Tensor of label predictions
+It should be predicted label, probabilities or logits with shape of (num_tasks, n_sample) or (n_sample, ).</p></li>
+<li><p><strong>target</strong> (<em>Tensor</em>) – Tensor of ground truth labels with shape of (num_tasks, n_sample) or (n_sample, ).</p></li>
+<li><p><strong>weight</strong> (<em>Tensor</em>) – Optional. A manual rescaling weight to match input tensor shape (num_tasks, num_samples) or (n_sample, ).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.metrics.custom.NegRootMeanSquaredError">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.metrics.custom.</span></span><span class="sig-name descname"><span class="pre">NegRootMeanSquaredError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multioutput</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'uniform_average'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.NegRootMeanSquaredError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MeanSquaredError</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.custom.NegRootMeanSquaredError.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.NegRootMeanSquaredError.compute" title="Link to this definition"></a></dt>
+<dd><p>Return the Mean Squared Error.</p>
+<p>NaN is returned if no calls to <code class="docutils literal notranslate"><span class="pre">update()</span></code> are made before <code class="docutils literal notranslate"><span class="pre">compute()</span></code> is called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.custom.NegRootMeanSquaredError.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.NegRootMeanSquaredError.update" title="Link to this definition"></a></dt>
+<dd><p>Update states with the ground truth values and predictions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>Tensor</em>) – Tensor of predicted values with shape of (n_sample, n_output).</p></li>
+<li><p><strong>target</strong> (<em>Tensor</em>) – Tensor of ground truth values with shape of (n_sample, n_output).</p></li>
+<li><p><strong>sample_weight</strong> (<em>Optional</em>) – Tensor of sample weights with shape of (n_sample, ). Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.metrics.custom.PrimeNetAccuracy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.metrics.custom.</span></span><span class="sig-name descname"><span class="pre">PrimeNetAccuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">__</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.PrimeNetAccuracy" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.custom.PrimeNetAccuracy.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.PrimeNetAccuracy.compute" title="Link to this definition"></a></dt>
+<dd><p>Implement this method to compute and return the final metric value
+from state variables.</p>
+<p>Decorate compute() with &#64;torch.inference_mode() which gives better
+performance by disabling view tracking.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.custom.PrimeNetAccuracy.merge_state">
+<span class="sig-name descname"><span class="pre">merge_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.PrimeNetAccuracy.merge_state" title="Link to this definition"></a></dt>
+<dd><p>Implement this method to update the current metric’s state variables
+to be the merged states of the current metric and input metrics. The state
+variables of input metrics should stay unchanged.</p>
+<p>Decorate merge_state() with &#64;torch.inference_mode() which gives better
+performance by disabling view tracking.</p>
+<p><code class="docutils literal notranslate"><span class="pre">self.merge_state</span></code> might change the size/shape of state variables.
+Make sure <code class="docutils literal notranslate"><span class="pre">self.update</span></code> and <code class="docutils literal notranslate"><span class="pre">self.compute</span></code> can still be called
+without exceptions when state variables are merged.</p>
+<p>This method can be used as a building block for syncing metric states
+in distributed training. For example, <code class="docutils literal notranslate"><span class="pre">sync_and_compute</span></code> in the metric
+toolkit will use this method to merge metric objects gathered from the
+process group.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.custom.PrimeNetAccuracy.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.custom.PrimeNetAccuracy.update" title="Link to this definition"></a></dt>
+<dd><p>Implement this method to update the state variables of your metric class.</p>
+<p>Decorate update() with &#64;torch.inference_mode() which gives better
+performance by disabling view tracking.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ebes.metrics.neural_hawkes">
+<span id="ebes-metrics-neural-hawkes-module"></span><h2>ebes.metrics.neural_hawkes module<a class="headerlink" href="#module-ebes.metrics.neural_hawkes" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.metrics.neural_hawkes.NHEventLogIntensity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.metrics.neural_hawkes.</span></span><span class="sig-name descname"><span class="pre">NHEventLogIntensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.neural_hawkes.NHEventLogIntensity" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Mean</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.neural_hawkes.NHEventLogIntensity.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.neural_hawkes.NHEventLogIntensity.update" title="Link to this definition"></a></dt>
+<dd><p>Compute weighted mean. When weight is not provided, it calculates the unweighted mean.</p>
+<p>weighted_mean = sum(weight * input) / sum(weight)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>Tensor</em>) – Tensor of input values.</p></li>
+<li><p><strong>weight</strong> (<em>optional</em>) – Float or Int or Tensor of input weights. It is default to 1.0. If weight is a Tensor, its size should match the input tensor size.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If value of weight is neither a <code class="docutils literal notranslate"><span class="pre">float</span></code> nor a <code class="docutils literal notranslate"><span class="pre">int''</span> <span class="pre">nor</span> <span class="pre">a</span> <span class="pre">``torch.Tensor</span></code> that matches the input tensor size.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.metrics.neural_hawkes.NHEventTypeAccuracy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.metrics.neural_hawkes.</span></span><span class="sig-name descname"><span class="pre">NHEventTypeAccuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">__</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.neural_hawkes.NHEventTypeAccuracy" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.neural_hawkes.NHEventTypeAccuracy.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.neural_hawkes.NHEventTypeAccuracy.compute" title="Link to this definition"></a></dt>
+<dd><p>Implement this method to compute and return the final metric value
+from state variables.</p>
+<p>Decorate compute() with &#64;torch.inference_mode() which gives better
+performance by disabling view tracking.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.neural_hawkes.NHEventTypeAccuracy.merge_state">
+<span class="sig-name descname"><span class="pre">merge_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.neural_hawkes.NHEventTypeAccuracy.merge_state" title="Link to this definition"></a></dt>
+<dd><p>Implement this method to update the current metric’s state variables
+to be the merged states of the current metric and input metrics. The state
+variables of input metrics should stay unchanged.</p>
+<p>Decorate merge_state() with &#64;torch.inference_mode() which gives better
+performance by disabling view tracking.</p>
+<p><code class="docutils literal notranslate"><span class="pre">self.merge_state</span></code> might change the size/shape of state variables.
+Make sure <code class="docutils literal notranslate"><span class="pre">self.update</span></code> and <code class="docutils literal notranslate"><span class="pre">self.compute</span></code> can still be called
+without exceptions when state variables are merged.</p>
+<p>This method can be used as a building block for syncing metric states
+in distributed training. For example, <code class="docutils literal notranslate"><span class="pre">sync_and_compute</span></code> in the metric
+toolkit will use this method to merge metric objects gathered from the
+process group.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.neural_hawkes.NHEventTypeAccuracy.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.neural_hawkes.NHEventTypeAccuracy.update" title="Link to this definition"></a></dt>
+<dd><p>Implement this method to update the state variables of your metric class.</p>
+<p>Decorate update() with &#64;torch.inference_mode() which gives better
+performance by disabling view tracking.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.metrics.neural_hawkes.NHLL">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.metrics.neural_hawkes.</span></span><span class="sig-name descname"><span class="pre">NHLL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.neural_hawkes.NHLL" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Mean</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.neural_hawkes.NHLL.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.neural_hawkes.NHLL.update" title="Link to this definition"></a></dt>
+<dd><p>Compute weighted mean. When weight is not provided, it calculates the unweighted mean.</p>
+<p>weighted_mean = sum(weight * input) / sum(weight)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>Tensor</em>) – Tensor of input values.</p></li>
+<li><p><strong>weight</strong> (<em>optional</em>) – Float or Int or Tensor of input weights. It is default to 1.0. If weight is a Tensor, its size should match the input tensor size.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If value of weight is neither a <code class="docutils literal notranslate"><span class="pre">float</span></code> nor a <code class="docutils literal notranslate"><span class="pre">int''</span> <span class="pre">nor</span> <span class="pre">a</span> <span class="pre">``torch.Tensor</span></code> that matches the input tensor size.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.metrics.neural_hawkes.NHNegNonEventIntensity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.metrics.neural_hawkes.</span></span><span class="sig-name descname"><span class="pre">NHNegNonEventIntensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.neural_hawkes.NHNegNonEventIntensity" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Mean</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.metrics.neural_hawkes.NHNegNonEventIntensity.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.metrics.neural_hawkes.NHNegNonEventIntensity.update" title="Link to this definition"></a></dt>
+<dd><p>Compute weighted mean. When weight is not provided, it calculates the unweighted mean.</p>
+<p>weighted_mean = sum(weight * input) / sum(weight)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>Tensor</em>) – Tensor of input values.</p></li>
+<li><p><strong>weight</strong> (<em>optional</em>) – Float or Int or Tensor of input weights. It is default to 1.0. If weight is a Tensor, its size should match the input tensor size.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If value of weight is neither a <code class="docutils literal notranslate"><span class="pre">float</span></code> nor a <code class="docutils literal notranslate"><span class="pre">int''</span> <span class="pre">nor</span> <span class="pre">a</span> <span class="pre">``torch.Tensor</span></code> that matches the input tensor size.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ebes.metrics">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ebes.metrics" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ebes.losses.html" class="btn btn-neutral float-left" title="ebes.losses package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebes.model.html" class="btn btn-neutral float-right" title="ebes.model package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Dmitry Osin, Igor Udovichenko.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

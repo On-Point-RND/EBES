@@ -1,0 +1,682 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ebes package &mdash; EBES  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ebes.data package" href="ebes.data.html" />
+    <link rel="prev" title="ebes" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EBES
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html"> Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html"> Quick start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/design.html"> Benchmark design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data_format.html"> Data format used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/configs.html"> Configuration files format</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html"> Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ebes package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html">ebes.data package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.losses.html">ebes.losses package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html">ebes.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html">ebes.model package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.pipeline.html">ebes.pipeline package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.utils.html">ebes.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ebes-trainer-module">ebes.trainer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ebes.types">ebes.types module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ebes.types.Batch"><code class="docutils literal notranslate"><span class="pre">Batch</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ebes.types.NHReturn"><code class="docutils literal notranslate"><span class="pre">NHReturn</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ebes.types.NHSeq"><code class="docutils literal notranslate"><span class="pre">NHSeq</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ebes.types.PrimeNetReturn"><code class="docutils literal notranslate"><span class="pre">PrimeNetReturn</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ebes.types.Seq"><code class="docutils literal notranslate"><span class="pre">Seq</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EBES</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">ebes</a></li>
+      <li class="breadcrumb-item active">ebes package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/ebes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ebes-package">
+<h1>ebes package<a class="headerlink" href="#ebes-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ebes.data.html">ebes.data package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebes.data.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.data.html#module-ebes.data.accessors">ebes.data.accessors module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.accessors.InMemoryPandasDataAccessor"><code class="docutils literal notranslate"><span class="pre">InMemoryPandasDataAccessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.accessors.InMemoryPandasDataAccessor.get_split"><code class="docutils literal notranslate"><span class="pre">InMemoryPandasDataAccessor.get_split()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.accessors.PandasDataAccessor"><code class="docutils literal notranslate"><span class="pre">PandasDataAccessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.accessors.PandasDataAccessor.get_split"><code class="docutils literal notranslate"><span class="pre">PandasDataAccessor.get_split()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.data.html#module-ebes.data.batch_tfs">ebes.data.batch_tfs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.BatchTransform"><code class="docutils literal notranslate"><span class="pre">BatchTransform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.CatToNum"><code class="docutils literal notranslate"><span class="pre">CatToNum</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.ContrastiveTarget"><code class="docutils literal notranslate"><span class="pre">ContrastiveTarget</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.DatetimeToFloat"><code class="docutils literal notranslate"><span class="pre">DatetimeToFloat</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.DatetimeToFloat.loc"><code class="docutils literal notranslate"><span class="pre">DatetimeToFloat.loc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.DatetimeToFloat.scale"><code class="docutils literal notranslate"><span class="pre">DatetimeToFloat.scale</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.FillNans"><code class="docutils literal notranslate"><span class="pre">FillNans</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.FillNans.fill_value"><code class="docutils literal notranslate"><span class="pre">FillNans.fill_value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.ForwardFillNans"><code class="docutils literal notranslate"><span class="pre">ForwardFillNans</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.ForwardFillNans.backward"><code class="docutils literal notranslate"><span class="pre">ForwardFillNans.backward</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.Logarithm"><code class="docutils literal notranslate"><span class="pre">Logarithm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.Logarithm.names"><code class="docutils literal notranslate"><span class="pre">Logarithm.names</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.MaskValid"><code class="docutils literal notranslate"><span class="pre">MaskValid</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.PrimeNetSampler"><code class="docutils literal notranslate"><span class="pre">PrimeNetSampler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.PrimeNetSampler.dense_sampling_bound"><code class="docutils literal notranslate"><span class="pre">PrimeNetSampler.dense_sampling_bound</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.PrimeNetSampler.len_sampling_bound"><code class="docutils literal notranslate"><span class="pre">PrimeNetSampler.len_sampling_bound</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.PrimeNetSampler.mask_ratio_per_seg"><code class="docutils literal notranslate"><span class="pre">PrimeNetSampler.mask_ratio_per_seg</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.PrimeNetSampler.pretrain_tasks"><code class="docutils literal notranslate"><span class="pre">PrimeNetSampler.pretrain_tasks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.PrimeNetSampler.segment_num"><code class="docutils literal notranslate"><span class="pre">PrimeNetSampler.segment_num</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.RandomEventsPermutation"><code class="docutils literal notranslate"><span class="pre">RandomEventsPermutation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.RandomEventsPermutation.keep_last"><code class="docutils literal notranslate"><span class="pre">RandomEventsPermutation.keep_last</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.RandomSlices"><code class="docutils literal notranslate"><span class="pre">RandomSlices</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.RandomSlices.cnt_max"><code class="docutils literal notranslate"><span class="pre">RandomSlices.cnt_max</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.RandomSlices.cnt_min"><code class="docutils literal notranslate"><span class="pre">RandomSlices.cnt_min</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.RandomSlices.seed"><code class="docutils literal notranslate"><span class="pre">RandomSlices.seed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.RandomSlices.short_seq_crop_rate"><code class="docutils literal notranslate"><span class="pre">RandomSlices.short_seq_crop_rate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.RandomSlices.split_count"><code class="docutils literal notranslate"><span class="pre">RandomSlices.split_count</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.RandomTime"><code class="docutils literal notranslate"><span class="pre">RandomTime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.Rescale"><code class="docutils literal notranslate"><span class="pre">Rescale</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.Rescale.loc"><code class="docutils literal notranslate"><span class="pre">Rescale.loc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.Rescale.name"><code class="docutils literal notranslate"><span class="pre">Rescale.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.Rescale.scale"><code class="docutils literal notranslate"><span class="pre">Rescale.scale</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.RescaleTime"><code class="docutils literal notranslate"><span class="pre">RescaleTime</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.RescaleTime.loc"><code class="docutils literal notranslate"><span class="pre">RescaleTime.loc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.RescaleTime.scale"><code class="docutils literal notranslate"><span class="pre">RescaleTime.scale</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.TargetToLong"><code class="docutils literal notranslate"><span class="pre">TargetToLong</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.TimeToFeatures"><code class="docutils literal notranslate"><span class="pre">TimeToFeatures</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.TimeToFeatures.process_type"><code class="docutils literal notranslate"><span class="pre">TimeToFeatures.process_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.TimeToFeatures.time_name"><code class="docutils literal notranslate"><span class="pre">TimeToFeatures.time_name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.batch_tfs.UnsqueezeTarget"><code class="docutils literal notranslate"><span class="pre">UnsqueezeTarget</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.data.html#module-ebes.data.datasets">ebes.data.datasets module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.datasets.SeriesDataset"><code class="docutils literal notranslate"><span class="pre">SeriesDataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.datasets.SizedSeriesDataset"><code class="docutils literal notranslate"><span class="pre">SizedSeriesDataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.datasets.series"><code class="docutils literal notranslate"><span class="pre">series()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.data.html#module-ebes.data.loading">ebes.data.loading module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.loading.SequenceCollator"><code class="docutils literal notranslate"><span class="pre">SequenceCollator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.loading.SequenceCollator.batch_transforms"><code class="docutils literal notranslate"><span class="pre">SequenceCollator.batch_transforms</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.loading.SequenceCollator.cat_cardinalities"><code class="docutils literal notranslate"><span class="pre">SequenceCollator.cat_cardinalities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.loading.SequenceCollator.index_name"><code class="docutils literal notranslate"><span class="pre">SequenceCollator.index_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.loading.SequenceCollator.max_seq_len"><code class="docutils literal notranslate"><span class="pre">SequenceCollator.max_seq_len</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.loading.SequenceCollator.num_names"><code class="docutils literal notranslate"><span class="pre">SequenceCollator.num_names</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.loading.SequenceCollator.padding_type"><code class="docutils literal notranslate"><span class="pre">SequenceCollator.padding_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.loading.SequenceCollator.target_name"><code class="docutils literal notranslate"><span class="pre">SequenceCollator.target_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.data.html#ebes.data.loading.SequenceCollator.time_name"><code class="docutils literal notranslate"><span class="pre">SequenceCollator.time_name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.data.html#module-ebes.data.utils">ebes.data.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.utils.build_loaders"><code class="docutils literal notranslate"><span class="pre">build_loaders()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.utils.get_accessor"><code class="docutils literal notranslate"><span class="pre">get_accessor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.utils.get_collator"><code class="docutils literal notranslate"><span class="pre">get_collator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.data.html#ebes.data.utils.get_loader"><code class="docutils literal notranslate"><span class="pre">get_loader()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.data.html#module-ebes.data">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebes.losses.html">ebes.losses package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebes.losses.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.losses.html#module-ebes.losses.base">ebes.losses.base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.losses.html#ebes.losses.base.ModelLoss"><code class="docutils literal notranslate"><span class="pre">ModelLoss</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.losses.html#ebes.losses.base.ModelLoss.forward"><code class="docutils literal notranslate"><span class="pre">ModelLoss.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.losses.html#module-ebes.losses.contrastive">ebes.losses.contrastive module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.losses.html#ebes.losses.contrastive.ContrastiveLoss"><code class="docutils literal notranslate"><span class="pre">ContrastiveLoss</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.losses.html#ebes.losses.contrastive.ContrastiveLoss.forward"><code class="docutils literal notranslate"><span class="pre">ContrastiveLoss.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.losses.html#ebes.losses.contrastive.HardNegativePairSelector"><code class="docutils literal notranslate"><span class="pre">HardNegativePairSelector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.losses.html#ebes.losses.contrastive.HardNegativePairSelector.get_pairs"><code class="docutils literal notranslate"><span class="pre">HardNegativePairSelector.get_pairs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.losses.html#ebes.losses.contrastive.InfoNCELoss"><code class="docutils literal notranslate"><span class="pre">InfoNCELoss</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.losses.html#ebes.losses.contrastive.InfoNCELoss.forward"><code class="docutils literal notranslate"><span class="pre">InfoNCELoss.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.losses.html#ebes.losses.contrastive.PairSelector"><code class="docutils literal notranslate"><span class="pre">PairSelector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.losses.html#ebes.losses.contrastive.PairSelector.get_pairs"><code class="docutils literal notranslate"><span class="pre">PairSelector.get_pairs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.losses.html#ebes.losses.contrastive.outer_pairwise_distance"><code class="docutils literal notranslate"><span class="pre">outer_pairwise_distance()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.losses.html#module-ebes.losses.multi_label">ebes.losses.multi_label module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.losses.html#ebes.losses.multi_label.MultiLabelBinaryCrossEntropyLoss"><code class="docutils literal notranslate"><span class="pre">MultiLabelBinaryCrossEntropyLoss</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.losses.html#ebes.losses.multi_label.MultiLabelBinaryCrossEntropyLoss.forward"><code class="docutils literal notranslate"><span class="pre">MultiLabelBinaryCrossEntropyLoss.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.losses.html#module-ebes.losses.neural_hawkes">ebes.losses.neural_hawkes module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.losses.html#ebes.losses.neural_hawkes.NHLoss"><code class="docutils literal notranslate"><span class="pre">NHLoss</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.losses.html#ebes.losses.neural_hawkes.NHLoss.forward"><code class="docutils literal notranslate"><span class="pre">NHLoss.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.losses.html#module-ebes.losses">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebes.metrics.html">ebes.metrics package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebes.metrics.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.metrics.html#module-ebes.metrics.custom">ebes.metrics.custom module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.LoggingMetric"><code class="docutils literal notranslate"><span class="pre">LoggingMetric</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.LoggingMetric.compute"><code class="docutils literal notranslate"><span class="pre">LoggingMetric.compute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.LoggingMetric.merge_state"><code class="docutils literal notranslate"><span class="pre">LoggingMetric.merge_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.LoggingMetric.update"><code class="docutils literal notranslate"><span class="pre">LoggingMetric.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.MLEM_reconstruction_loss"><code class="docutils literal notranslate"><span class="pre">MLEM_reconstruction_loss</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.MLEM_sparcity_loss"><code class="docutils literal notranslate"><span class="pre">MLEM_sparcity_loss</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.MLEM_total_CE_loss"><code class="docutils literal notranslate"><span class="pre">MLEM_total_CE_loss</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.MLEM_total_mse_loss"><code class="docutils literal notranslate"><span class="pre">MLEM_total_mse_loss</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.MultiLabelMeanAUROC"><code class="docutils literal notranslate"><span class="pre">MultiLabelMeanAUROC</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.MultiLabelMeanAUROC.compute"><code class="docutils literal notranslate"><span class="pre">MultiLabelMeanAUROC.compute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.MultiLabelMeanAUROC.update"><code class="docutils literal notranslate"><span class="pre">MultiLabelMeanAUROC.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.NegRootMeanSquaredError"><code class="docutils literal notranslate"><span class="pre">NegRootMeanSquaredError</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.NegRootMeanSquaredError.compute"><code class="docutils literal notranslate"><span class="pre">NegRootMeanSquaredError.compute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.NegRootMeanSquaredError.update"><code class="docutils literal notranslate"><span class="pre">NegRootMeanSquaredError.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.PrimeNetAccuracy"><code class="docutils literal notranslate"><span class="pre">PrimeNetAccuracy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.PrimeNetAccuracy.compute"><code class="docutils literal notranslate"><span class="pre">PrimeNetAccuracy.compute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.PrimeNetAccuracy.merge_state"><code class="docutils literal notranslate"><span class="pre">PrimeNetAccuracy.merge_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.custom.PrimeNetAccuracy.update"><code class="docutils literal notranslate"><span class="pre">PrimeNetAccuracy.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.metrics.html#module-ebes.metrics.neural_hawkes">ebes.metrics.neural_hawkes module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.neural_hawkes.NHEventLogIntensity"><code class="docutils literal notranslate"><span class="pre">NHEventLogIntensity</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.neural_hawkes.NHEventLogIntensity.update"><code class="docutils literal notranslate"><span class="pre">NHEventLogIntensity.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.neural_hawkes.NHEventTypeAccuracy"><code class="docutils literal notranslate"><span class="pre">NHEventTypeAccuracy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.neural_hawkes.NHEventTypeAccuracy.compute"><code class="docutils literal notranslate"><span class="pre">NHEventTypeAccuracy.compute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.neural_hawkes.NHEventTypeAccuracy.merge_state"><code class="docutils literal notranslate"><span class="pre">NHEventTypeAccuracy.merge_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.neural_hawkes.NHEventTypeAccuracy.update"><code class="docutils literal notranslate"><span class="pre">NHEventTypeAccuracy.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.neural_hawkes.NHLL"><code class="docutils literal notranslate"><span class="pre">NHLL</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.neural_hawkes.NHLL.update"><code class="docutils literal notranslate"><span class="pre">NHLL.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.neural_hawkes.NHNegNonEventIntensity"><code class="docutils literal notranslate"><span class="pre">NHNegNonEventIntensity</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.metrics.html#ebes.metrics.neural_hawkes.NHNegNonEventIntensity.update"><code class="docutils literal notranslate"><span class="pre">NHNegNonEventIntensity.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.metrics.html#module-ebes.metrics">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebes.model.html">ebes.model package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebes.model.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.PrimeNet.html">ebes.model.PrimeNet package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.PrimeNet.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.PrimeNet.html#module-ebes.model.PrimeNet.learn_time_emb">ebes.model.PrimeNet.learn_time_emb module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.PrimeNet.html#module-ebes.model.PrimeNet.models">ebes.model.PrimeNet.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.PrimeNet.html#module-ebes.model.PrimeNet.modules">ebes.model.PrimeNet.modules module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.PrimeNet.html#module-ebes.model.PrimeNet">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.mamba.html">ebes.model.mamba package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.mamba.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.mamba.html#ebes-model-mamba-mamba-es-module">ebes.model.mamba.mamba_es module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.mamba.html#module-ebes.model.mamba">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.model.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.model.html#module-ebes.model.agg">ebes.model.agg module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.agg.AllHiddenMean"><code class="docutils literal notranslate"><span class="pre">AllHiddenMean</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.agg.AllHiddenMean.forward"><code class="docutils literal notranslate"><span class="pre">AllHiddenMean.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.agg.BaseAgg"><code class="docutils literal notranslate"><span class="pre">BaseAgg</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.agg.BaseAgg.forward"><code class="docutils literal notranslate"><span class="pre">BaseAgg.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.agg.TakeLastHidden"><code class="docutils literal notranslate"><span class="pre">TakeLastHidden</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.agg.TakeLastHidden.forward"><code class="docutils literal notranslate"><span class="pre">TakeLastHidden.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.agg.ToTensor"><code class="docutils literal notranslate"><span class="pre">ToTensor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.agg.ToTensor.forward"><code class="docutils literal notranslate"><span class="pre">ToTensor.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.agg.ValidHiddenMean"><code class="docutils literal notranslate"><span class="pre">ValidHiddenMean</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.agg.ValidHiddenMean.forward"><code class="docutils literal notranslate"><span class="pre">ValidHiddenMean.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.model.html#module-ebes.model.basemodel">ebes.model.basemodel module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.basemodel.BaseModel"><code class="docutils literal notranslate"><span class="pre">BaseModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.basemodel.BaseModel.get_model"><code class="docutils literal notranslate"><span class="pre">BaseModel.get_model()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.model.html#ebes-model-mtand-module">ebes.model.mtand module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.model.html#module-ebes.model.preprocess">ebes.model.preprocess module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.preprocess.Batch2Seq"><code class="docutils literal notranslate"><span class="pre">Batch2Seq</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.preprocess.Batch2Seq.forward"><code class="docutils literal notranslate"><span class="pre">Batch2Seq.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.preprocess.Batch2Seq.output_dim"><code class="docutils literal notranslate"><span class="pre">Batch2Seq.output_dim</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.preprocess.SeqBatchNorm"><code class="docutils literal notranslate"><span class="pre">SeqBatchNorm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.preprocess.SeqBatchNorm.forward"><code class="docutils literal notranslate"><span class="pre">SeqBatchNorm.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.model.html#module-ebes.model.seq2seq">ebes.model.seq2seq module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.BaseSeq2Seq"><code class="docutils literal notranslate"><span class="pre">BaseSeq2Seq</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.BaseSeq2Seq.forward"><code class="docutils literal notranslate"><span class="pre">BaseSeq2Seq.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.GRU"><code class="docutils literal notranslate"><span class="pre">GRU</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.GRU.forward"><code class="docutils literal notranslate"><span class="pre">GRU.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.GRU.output_dim"><code class="docutils literal notranslate"><span class="pre">GRU.output_dim</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.PositionalEncoding"><code class="docutils literal notranslate"><span class="pre">PositionalEncoding</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.PositionalEncoding.forward"><code class="docutils literal notranslate"><span class="pre">PositionalEncoding.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.PositionalEncoding.get_pe"><code class="docutils literal notranslate"><span class="pre">PositionalEncoding.get_pe()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.Projection"><code class="docutils literal notranslate"><span class="pre">Projection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.Projection.forward"><code class="docutils literal notranslate"><span class="pre">Projection.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.Projection.output_dim"><code class="docutils literal notranslate"><span class="pre">Projection.output_dim</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.Transformer"><code class="docutils literal notranslate"><span class="pre">Transformer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.Transformer.forward"><code class="docutils literal notranslate"><span class="pre">Transformer.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.Transformer.output_dim"><code class="docutils literal notranslate"><span class="pre">Transformer.output_dim</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.model.html#module-ebes.model.utils">ebes.model.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.utils.FrozenModel"><code class="docutils literal notranslate"><span class="pre">FrozenModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.utils.FrozenModel.forward"><code class="docutils literal notranslate"><span class="pre">FrozenModel.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.utils.FrozenModel.train"><code class="docutils literal notranslate"><span class="pre">FrozenModel.train()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.utils.build_model"><code class="docutils literal notranslate"><span class="pre">build_model()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.model.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebes.pipeline.html">ebes.pipeline package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebes.pipeline.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.pipeline.html#ebes-pipeline-base-runner-module">ebes.pipeline.base_runner module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.pipeline.html#ebes-pipeline-utils-module">ebes.pipeline.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.pipeline.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ebes.utils.html">ebes.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ebes.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.utils.html#ebes-utils-general-module">ebes.utils.general module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.utils.html#ebes-utils-reproduce-module">ebes.utils.reproduce module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.utils.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="ebes-trainer-module">
+<h2>ebes.trainer module<a class="headerlink" href="#ebes-trainer-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-ebes.types">
+<span id="ebes-types-module"></span><h2>ebes.types module<a class="headerlink" href="#module-ebes.types" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.types.Batch">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.types.</span></span><span class="sig-name descname"><span class="pre">Batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_features_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.types.Batch" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Batch.cat_features">
+<span class="sig-name descname"><span class="pre">cat_features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.types.Batch.cat_features" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Batch.cat_features_names">
+<span class="sig-name descname"><span class="pre">cat_features_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.types.Batch.cat_features_names" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Batch.cat_mask">
+<span class="sig-name descname"><span class="pre">cat_mask</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.types.Batch.cat_mask" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Batch.index">
+<span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code> <span class="pre">|</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><a class="headerlink" href="#ebes.types.Batch.index" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Batch.lengths">
+<span class="sig-name descname"><span class="pre">lengths</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.Batch.lengths" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Batch.num_features">
+<span class="sig-name descname"><span class="pre">num_features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.types.Batch.num_features" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Batch.num_features_names">
+<span class="sig-name descname"><span class="pre">num_features_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.types.Batch.num_features_names" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Batch.num_mask">
+<span class="sig-name descname"><span class="pre">num_mask</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.types.Batch.num_mask" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.types.Batch.pop_target">
+<span class="sig-name descname"><span class="pre">pop_target</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebes.types.Batch.pop_target" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code> | <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Batch.target">
+<span class="sig-name descname"><span class="pre">target</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.types.Batch.target" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Batch.time">
+<span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code> <span class="pre">|</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.Batch.time" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.types.Batch.to">
+<span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.types.Batch.to" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.types.NHReturn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.types.</span></span><span class="sig-name descname"><span class="pre">NHReturn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pre_event_intensities_of_gt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_event_intensity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clustering_loss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clus_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.types.NHReturn" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.NHReturn.clus_labels">
+<span class="sig-name descname"><span class="pre">clus_labels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.NHReturn.clus_labels" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.NHReturn.clustering_loss">
+<span class="sig-name descname"><span class="pre">clustering_loss</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.NHReturn.clustering_loss" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.NHReturn.lengths">
+<span class="sig-name descname"><span class="pre">lengths</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.NHReturn.lengths" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.NHReturn.non_event_intensity">
+<span class="sig-name descname"><span class="pre">non_event_intensity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.NHReturn.non_event_intensity" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.NHReturn.pre_event_intensities_of_gt">
+<span class="sig-name descname"><span class="pre">pre_event_intensities_of_gt</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.NHReturn.pre_event_intensities_of_gt" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.NHReturn.pred_labels">
+<span class="sig-name descname"><span class="pre">pred_labels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.NHReturn.pred_labels" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.types.NHReturn.to">
+<span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.types.NHReturn.to" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.types.NHSeq">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.types.</span></span><span class="sig-name descname"><span class="pre">NHSeq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokens</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clustering_loss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clus_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.types.NHSeq" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.types.Seq" title="ebes.types.Seq"><code class="xref py py-class docutils literal notranslate"><span class="pre">Seq</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.NHSeq.clus_labels">
+<span class="sig-name descname"><span class="pre">clus_labels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.NHSeq.clus_labels" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.NHSeq.clustering_loss">
+<span class="sig-name descname"><span class="pre">clustering_loss</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.NHSeq.clustering_loss" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.types.PrimeNetReturn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.types.</span></span><span class="sig-name descname"><span class="pre">PrimeNetReturn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cl_loss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mse_loss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_num</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.types.PrimeNetReturn" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.PrimeNetReturn.cl_loss">
+<span class="sig-name descname"><span class="pre">cl_loss</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.PrimeNetReturn.cl_loss" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.PrimeNetReturn.correct_num">
+<span class="sig-name descname"><span class="pre">correct_num</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#ebes.types.PrimeNetReturn.correct_num" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.PrimeNetReturn.loss">
+<span class="sig-name descname"><span class="pre">loss</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.PrimeNetReturn.loss" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.PrimeNetReturn.mse_loss">
+<span class="sig-name descname"><span class="pre">mse_loss</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.PrimeNetReturn.mse_loss" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.types.PrimeNetReturn.to">
+<span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.types.PrimeNetReturn.to" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.PrimeNetReturn.total_num">
+<span class="sig-name descname"><span class="pre">total_num</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#ebes.types.PrimeNetReturn.total_num" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.types.Seq">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.types.</span></span><span class="sig-name descname"><span class="pre">Seq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokens</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lengths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.types.Seq" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Seq.lengths">
+<span class="sig-name descname"><span class="pre">lengths</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.Seq.lengths" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Seq.masks">
+<span class="sig-name descname"><span class="pre">masks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.types.Seq.masks" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Seq.time">
+<span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.Seq.time" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.types.Seq.to">
+<span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.types.Seq.to" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ebes.types.Seq.tokens">
+<span class="sig-name descname"><span class="pre">tokens</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></em><a class="headerlink" href="#ebes.types.Seq.tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="ebes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ebes.data.html" class="btn btn-neutral float-right" title="ebes.data package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Dmitry Osin, Igor Udovichenko.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
