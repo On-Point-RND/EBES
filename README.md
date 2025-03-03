@@ -1,5 +1,7 @@
 # EBES Easy Benchmarking for Event Sequences.
-https://arxiv.org/abs/2410.03399
+
+[![arXiv](https://img.shields.io/badge/arXiv-2410.03399-b31b1b.svg)](https://arxiv.org/abs/2410.03399)
+[![Docs](https://badgen.net/static/Docs/EBES/green)](https://on-point-rnd.github.io/EBES/)
 
 EBES is an easy-to-use development and application toolkit for Event Sequence(EvS) Assesment, with key features in configurability, compatibility and reproducibility. We hope this project could benefit both researchers and practitioners with the goal of easily customized development and open benchmarking in EvS.
 
