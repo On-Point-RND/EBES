@@ -5,6 +5,6 @@ optuna==3.5.0
 torcheval==0.0.7
 omegaconf==2.3.0
 lightgbm==4.3.0
-mamba_ssm==1.2.2
-# torchcde==0.2.5
+einops==0.7.0
+# mamba_ssm==1.2.2
 sktime==0.35.0

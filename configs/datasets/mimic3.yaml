@@ -6,7 +6,7 @@ main_loss:
   name: nn.CrossEntropyLoss
 
 cc:
-  CRR: 2
+  CRR: 5
 nn:
   - Temp
   - SpO2

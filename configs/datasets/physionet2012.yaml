@@ -6,9 +6,9 @@ main_loss:
   name: nn.CrossEntropyLoss
 
 cc:
-  MechVent: 2
-  Gender: 4
-  ICUType: 5
+  MechVent: 3
+  Gender: 5
+  ICUType: 6
 nn:
   - Na
   - Age

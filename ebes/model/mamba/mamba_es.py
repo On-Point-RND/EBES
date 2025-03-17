@@ -7,19 +7,24 @@ from functools import partial
 import torch
 import torch.nn as nn
 
+from ...types import Seq
+from ..seq2seq import BaseSeq2Seq
+
+# logger = logging.getLogger(__name__)
+
+
 try:
     from mamba_ssm.modules.mamba_simple import Block, Mamba
 except ImportError:
-    raise RuntimeError("Mamba import failed. Please install mamba_ssm==1.2.2")
-
+    # logger.debug("Mamba import failed. Please install mamba_ssm==1.2.2 to use Mamba")
+    pass
 
 try:
     from mamba_ssm.ops.triton.layernorm import RMSNorm, layer_norm_fn, rms_norm_fn
 except ImportError:
-    print("Attension!!!! RMSNorm, layer_norm_fn, rms_norm_fn = None, None, None")
+    # logger.debug(
+    # "Attension!!!! RMSNorm, layer_norm_fn, rms_norm_fn = None, None, None")
     RMSNorm, layer_norm_fn, rms_norm_fn = None, None, None
-from ..seq2seq import BaseSeq2Seq
-from ...types import Seq
 
 
 def create_block(
@@ -110,7 +115,10 @@ class MixerModel(nn.Module):
         self.fused_add_norm = fused_add_norm
         if self.fused_add_norm:
             if layer_norm_fn is None or rms_norm_fn is None:
-                raise ImportError("Failed to import Triton LayerNorm / RMSNorm kernels")
+                raise ImportError(
+                    "Failed to import Triton LayerNorm / RMSNorm kernels. "
+                    "Please install mamba_ssm==1.2.2 to use Mamba"
+                )
 
         self.layers = nn.ModuleList(
             [
