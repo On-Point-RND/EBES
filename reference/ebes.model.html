@@ -67,9 +67,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ebes.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ebes.html#ebes-trainer-module">ebes.trainer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes.trainer">ebes.trainer module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes.types">ebes.types module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -210,7 +210,19 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ebes.model.mamba.html">ebes.model.mamba package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ebes.model.mamba.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebes.model.mamba.html#ebes-model-mamba-mamba-es-module">ebes.model.mamba.mamba_es module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.model.mamba.html#module-ebes.model.mamba.mamba_es">ebes.model.mamba.mamba_es module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.mamba.html#ebes.model.mamba.mamba_es.MambaModel"><code class="docutils literal notranslate"><span class="pre">MambaModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.mamba.html#ebes.model.mamba.mamba_es.MambaModel.forward"><code class="docutils literal notranslate"><span class="pre">MambaModel.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.mamba.html#ebes.model.mamba.mamba_es.MambaModel.output_dim"><code class="docutils literal notranslate"><span class="pre">MambaModel.output_dim</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.mamba.html#ebes.model.mamba.mamba_es.MixerModel"><code class="docutils literal notranslate"><span class="pre">MixerModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.mamba.html#ebes.model.mamba.mamba_es.MixerModel.forward"><code class="docutils literal notranslate"><span class="pre">MixerModel.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.mamba.html#ebes.model.mamba.mamba_es.create_block"><code class="docutils literal notranslate"><span class="pre">create_block()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="ebes.model.mamba.html#module-ebes.model.mamba">Module contents</a></li>
 </ul>
 </li>
@@ -344,8 +356,57 @@ registered hooks while the latter silently ignores them.</p>
 </dd></dl>
 
 </section>
-<section id="ebes-model-mtand-module">
-<h2>ebes.model.mtand module<a class="headerlink" href="#ebes-model-mtand-module" title="Link to this heading"></a></h2>
+<section id="module-ebes.model.mtand">
+<span id="ebes-model-mtand-module"></span><h2>ebes.model.mtand module<a class="headerlink" href="#module-ebes.model.mtand" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.model.mtand.MTAND">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.model.mtand.</span></span><span class="sig-name descname"><span class="pre">MTAND</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nhidden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_heads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.model.mtand.MTAND" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebes.model.basemodel.BaseModel" title="ebes.model.basemodel.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.model.mtand.MTAND.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.model.mtand.MTAND.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.
+:rtype: <span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="ebes.html#ebes.types.Seq" title="ebes.types.Seq"><code class="xref py py-class docutils literal notranslate"><span class="pre">Seq</span></code></a></span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.model.mtand.MTAND.learn_time_embedding">
+<span class="sig-name descname"><span class="pre">learn_time_embedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.model.mtand.MTAND.learn_time_embedding" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ebes.model.mtand.MTAND.output_dim">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output_dim</span></span><a class="headerlink" href="#ebes.model.mtand.MTAND.output_dim" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.model.mtand.MultiTimeAttention">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.model.mtand.</span></span><span class="sig-name descname"><span class="pre">MultiTimeAttention</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nhidden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_heads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.model.mtand.MultiTimeAttention" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.model.mtand.MultiTimeAttention.attention">
+<span class="sig-name descname"><span class="pre">attention</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.model.mtand.MultiTimeAttention.attention" title="Link to this definition"></a></dt>
+<dd><p>Compute ‘Scaled Dot Product Attention’</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.model.mtand.MultiTimeAttention.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.model.mtand.MultiTimeAttention.forward" title="Link to this definition"></a></dt>
+<dd><p>Compute ‘Scaled Dot Product Attention’</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-ebes.model.preprocess">
 <span id="ebes-model-preprocess-module"></span><h2>ebes.model.preprocess module<a class="headerlink" href="#module-ebes.model.preprocess" title="Link to this heading"></a></h2>
@@ -597,8 +658,8 @@ mode (<code class="docutils literal notranslate"><span class="pre">False</span><
 </dd></dl>
 
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="module-ebes.model">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ebes.model" title="Link to this heading"></a></h2>
 </section>
 </section>
 

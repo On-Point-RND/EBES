@@ -66,9 +66,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ebes.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ebes.html#ebes-trainer-module">ebes.trainer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes.trainer">ebes.trainer module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes.types">ebes.types module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -106,14 +106,50 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="ebes-utils-general-module">
-<h2>ebes.utils.general module<a class="headerlink" href="#ebes-utils-general-module" title="Link to this heading"></a></h2>
+<section id="module-ebes.utils.general">
+<span id="ebes-utils-general-module"></span><h2>ebes.utils.general module<a class="headerlink" href="#module-ebes.utils.general" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.utils.general.LoadTime">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.utils.general.</span></span><span class="sig-name descname"><span class="pre">LoadTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.utils.general.LoadTime" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.utils.general.grad_norm">
+<span class="sig-prename descclassname"><span class="pre">ebes.utils.general.</span></span><span class="sig-name descname"><span class="pre">grad_norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">named_parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.utils.general.grad_norm" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.utils.general.log_to_file">
+<span class="sig-prename descclassname"><span class="pre">ebes.utils.general.</span></span><span class="sig-name descname"><span class="pre">log_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_lvl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'info'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cons_lvl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'warning'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.utils.general.log_to_file" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
-<section id="ebes-utils-reproduce-module">
-<h2>ebes.utils.reproduce module<a class="headerlink" href="#ebes-utils-reproduce-module" title="Link to this heading"></a></h2>
+<section id="module-ebes.utils.reproduce">
+<span id="ebes-utils-reproduce-module"></span><h2>ebes.utils.reproduce module<a class="headerlink" href="#module-ebes.utils.reproduce" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.utils.reproduce.get_global_state">
+<span class="sig-prename descclassname"><span class="pre">ebes.utils.reproduce.</span></span><span class="sig-name descname"><span class="pre">get_global_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebes.utils.reproduce.get_global_state" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.utils.reproduce.seed_everything">
+<span class="sig-prename descclassname"><span class="pre">ebes.utils.reproduce.</span></span><span class="sig-name descname"><span class="pre">seed_everything</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avoid_benchmark_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_deterministic_algorithms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.utils.reproduce.seed_everything" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.utils.reproduce.set_global_state">
+<span class="sig-prename descclassname"><span class="pre">ebes.utils.reproduce.</span></span><span class="sig-name descname"><span class="pre">set_global_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.utils.reproduce.set_global_state" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="module-ebes.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ebes.utils" title="Link to this heading"></a></h2>
 </section>
 </section>
 

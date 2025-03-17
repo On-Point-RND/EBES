@@ -67,9 +67,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ebes.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ebes.html#ebes-trainer-module">ebes.trainer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes.trainer">ebes.trainer module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes.types">ebes.types module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -107,14 +107,159 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="ebes-pipeline-base-runner-module">
-<h2>ebes.pipeline.base_runner module<a class="headerlink" href="#ebes-pipeline-base-runner-module" title="Link to this heading"></a></h2>
+<section id="module-ebes.pipeline.base_runner">
+<span id="ebes-pipeline-base-runner-module"></span><h2>ebes.pipeline.base_runner module<a class="headerlink" href="#module-ebes.pipeline.base_runner" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.pipeline.base_runner.Runner">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.pipeline.base_runner.</span></span><span class="sig-name descname"><span class="pre">Runner</span></span><a class="headerlink" href="#ebes.pipeline.base_runner.Runner" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.pipeline.base_runner.Runner.do_n_runs">
+<span class="sig-name descname"><span class="pre">do_n_runs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_runs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.base_runner.Runner.do_n_runs" title="Link to this definition"></a></dt>
+<dd><p>Do n runs with different seed in parralell</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.pipeline.base_runner.Runner.get_runner">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_runner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.base_runner.Runner.get_runner" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.pipeline.base_runner.Runner.param_grid">
+<span class="sig-name descname"><span class="pre">param_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trial</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.base_runner.Runner.param_grid" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Trial</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DictConfig</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.pipeline.base_runner.Runner.pipeline">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.base_runner.Runner.pipeline" title="Link to this definition"></a></dt>
+<dd><p>Construct your pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.pipeline.base_runner.Runner.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.base_runner.Runner.run" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">Study</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.pipeline.base_runner.Runner.run_optuna">
+<span class="sig-name descname"><span class="pre">run_optuna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'val_metric'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_startup_trials</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_trials</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multivariate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.base_runner.Runner.run_optuna" title="Link to this definition"></a></dt>
+<dd><p>Set target_metric according to _train_eval().
+request_list - list of dicts where {key:value} is
+{trial_parameter_name:parameter_value}
+n_startup_trials == n_random_trials
+n_trials == n_trials to make in total by this function
+call(doesn’t affect parallel runs).
+n_runs - better not torch it</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="ebes-pipeline-utils-module">
-<h2>ebes.pipeline.utils module<a class="headerlink" href="#ebes-pipeline-utils-module" title="Link to this heading"></a></h2>
+<section id="module-ebes.pipeline.utils">
+<span id="ebes-pipeline-utils-module"></span><h2>ebes.pipeline.utils module<a class="headerlink" href="#module-ebes.pipeline.utils" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.pipeline.utils.access_by_name">
+<span class="sig-prename descclassname"><span class="pre">ebes.pipeline.utils.</span></span><span class="sig-name descname"><span class="pre">access_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.utils.access_by_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.pipeline.utils.assign_by_name">
+<span class="sig-prename descclassname"><span class="pre">ebes.pipeline.utils.</span></span><span class="sig-name descname"><span class="pre">assign_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.utils.assign_by_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.pipeline.utils.get_dict_from_trial_params">
+<span class="sig-prename descclassname"><span class="pre">ebes.pipeline.utils.</span></span><span class="sig-name descname"><span class="pre">get_dict_from_trial_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.utils.get_dict_from_trial_params" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.pipeline.utils.get_loss">
+<span class="sig-prename descclassname"><span class="pre">ebes.pipeline.utils.</span></span><span class="sig-name descname"><span class="pre">get_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.utils.get_loss" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.pipeline.utils.get_metrics">
+<span class="sig-prename descclassname"><span class="pre">ebes.pipeline.utils.</span></span><span class="sig-name descname"><span class="pre">get_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric_specs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.utils.get_metrics" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Metric</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.pipeline.utils.get_optimizer">
+<span class="sig-prename descclassname"><span class="pre">ebes.pipeline.utils.</span></span><span class="sig-name descname"><span class="pre">get_optimizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Adam'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.utils.get_optimizer" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.pipeline.utils.get_scheduler">
+<span class="sig-prename descclassname"><span class="pre">ebes.pipeline.utils.</span></span><span class="sig-name descname"><span class="pre">get_scheduler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.utils.get_scheduler" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.pipeline.utils.get_unique_folder_suffix">
+<span class="sig-prename descclassname"><span class="pre">ebes.pipeline.utils.</span></span><span class="sig-name descname"><span class="pre">get_unique_folder_suffix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.utils.get_unique_folder_suffix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.pipeline.utils.optuna_df">
+<span class="sig-prename descclassname"><span class="pre">ebes.pipeline.utils.</span></span><span class="sig-name descname"><span class="pre">optuna_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'log/test'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.utils.optuna_df" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Study</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.pipeline.utils.parse_n_runs">
+<span class="sig-prename descclassname"><span class="pre">ebes.pipeline.utils.</span></span><span class="sig-name descname"><span class="pre">parse_n_runs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.utils.parse_n_runs" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.pipeline.utils.set_start_method">
+<span class="sig-prename descclassname"><span class="pre">ebes.pipeline.utils.</span></span><span class="sig-name descname"><span class="pre">set_start_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.utils.set_start_method" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.pipeline.utils.set_start_method_as_fork">
+<span class="sig-prename descclassname"><span class="pre">ebes.pipeline.utils.</span></span><span class="sig-name descname"><span class="pre">set_start_method_as_fork</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.utils.set_start_method_as_fork" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.pipeline.utils.suggest_conf">
+<span class="sig-prename descclassname"><span class="pre">ebes.pipeline.utils.</span></span><span class="sig-name descname"><span class="pre">suggest_conf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suggestions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trial</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.pipeline.utils.suggest_conf" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="module-ebes.pipeline">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ebes.pipeline" title="Link to this heading"></a></h2>
 </section>
 </section>
 

@@ -67,9 +67,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ebes.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ebes.html#ebes-trainer-module">ebes.trainer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes.trainer">ebes.trainer module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes.types">ebes.types module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.html#module-ebes">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -108,8 +108,53 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="ebes-model-mamba-mamba-es-module">
-<h2>ebes.model.mamba.mamba_es module<a class="headerlink" href="#ebes-model-mamba-mamba-es-module" title="Link to this heading"></a></h2>
+<section id="module-ebes.model.mamba.mamba_es">
+<span id="ebes-model-mamba-mamba-es-module"></span><h2>ebes.model.mamba.mamba_es module<a class="headerlink" href="#module-ebes.model.mamba.mamba_es" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.model.mamba.mamba_es.MambaModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.model.mamba.mamba_es.</span></span><span class="sig-name descname"><span class="pre">MambaModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">768</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rms_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual_in_fp32</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fused_add_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_prenorm_residual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_residuals_per_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cuda'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.float32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.model.mamba.mamba_es.MambaModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="ebes.model.html#ebes.model.seq2seq.BaseSeq2Seq" title="ebes.model.seq2seq.BaseSeq2Seq"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSeq2Seq</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.model.mamba.mamba_es.MambaModel.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.model.mamba.mamba_es.MambaModel.forward" title="Link to this definition"></a></dt>
+<dd><p>“position_ids” is just to be compatible with Transformer generation.
+We don’t use it.
+num_last_tokens: if &gt; 0, only return the logits for the last n tokens
+input_ids: (B, L, D)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ebes.model.mamba.mamba_es.MambaModel.output_dim">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output_dim</span></span><a class="headerlink" href="#ebes.model.mamba.mamba_es.MambaModel.output_dim" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.model.mamba.mamba_es.MixerModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.model.mamba.mamba_es.</span></span><span class="sig-name descname"><span class="pre">MixerModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ssm_cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rms_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializer_cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fused_add_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual_in_fp32</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.model.mamba.mamba_es.MixerModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.model.mamba.mamba_es.MixerModel.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inference_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.model.mamba.mamba_es.MixerModel.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.model.mamba.mamba_es.create_block">
+<span class="sig-prename descclassname"><span class="pre">ebes.model.mamba.mamba_es.</span></span><span class="sig-name descname"><span class="pre">create_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ssm_cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rms_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual_in_fp32</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fused_add_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_idx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.model.mamba.mamba_es.create_block" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="module-ebes.model.mamba">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ebes.model.mamba" title="Link to this heading"></a></h2>

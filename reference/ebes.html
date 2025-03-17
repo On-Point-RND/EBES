@@ -67,7 +67,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ebes-trainer-module">ebes.trainer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ebes.trainer">ebes.trainer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ebes.trainer.Trainer"><code class="docutils literal notranslate"><span class="pre">Trainer</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-ebes.types">ebes.types module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#ebes.types.Batch"><code class="docutils literal notranslate"><span class="pre">Batch</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ebes.types.NHReturn"><code class="docutils literal notranslate"><span class="pre">NHReturn</span></code></a></li>
@@ -76,7 +79,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#ebes.types.Seq"><code class="docutils literal notranslate"><span class="pre">Seq</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ebes">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -333,7 +336,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ebes.model.mamba.html">ebes.model.mamba package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="ebes.model.mamba.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ebes.model.mamba.html#ebes-model-mamba-mamba-es-module">ebes.model.mamba.mamba_es module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.mamba.html#module-ebes.model.mamba.mamba_es">ebes.model.mamba.mamba_es module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ebes.model.mamba.html#module-ebes.model.mamba">Module contents</a></li>
 </ul>
 </li>
@@ -370,7 +373,20 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ebes.model.html#ebes-model-mtand-module">ebes.model.mtand module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.model.html#module-ebes.model.mtand">ebes.model.mtand module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.mtand.MTAND"><code class="docutils literal notranslate"><span class="pre">MTAND</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.mtand.MTAND.forward"><code class="docutils literal notranslate"><span class="pre">MTAND.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.mtand.MTAND.learn_time_embedding"><code class="docutils literal notranslate"><span class="pre">MTAND.learn_time_embedding()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.mtand.MTAND.output_dim"><code class="docutils literal notranslate"><span class="pre">MTAND.output_dim</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.mtand.MultiTimeAttention"><code class="docutils literal notranslate"><span class="pre">MultiTimeAttention</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.mtand.MultiTimeAttention.attention"><code class="docutils literal notranslate"><span class="pre">MultiTimeAttention.attention()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.mtand.MultiTimeAttention.forward"><code class="docutils literal notranslate"><span class="pre">MultiTimeAttention.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="ebes.model.html#module-ebes.model.preprocess">ebes.model.preprocess module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.preprocess.Batch2Seq"><code class="docutils literal notranslate"><span class="pre">Batch2Seq</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="ebes.model.html#ebes.model.preprocess.Batch2Seq.forward"><code class="docutils literal notranslate"><span class="pre">Batch2Seq.forward()</span></code></a></li>
@@ -419,21 +435,57 @@
 <li class="toctree-l3"><a class="reference internal" href="ebes.model.html#ebes.model.utils.build_model"><code class="docutils literal notranslate"><span class="pre">build_model()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ebes.model.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.model.html#module-ebes.model">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ebes.pipeline.html">ebes.pipeline package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ebes.pipeline.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebes.pipeline.html#ebes-pipeline-base-runner-module">ebes.pipeline.base_runner module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebes.pipeline.html#ebes-pipeline-utils-module">ebes.pipeline.utils module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebes.pipeline.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.pipeline.html#module-ebes.pipeline.base_runner">ebes.pipeline.base_runner module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.base_runner.Runner"><code class="docutils literal notranslate"><span class="pre">Runner</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.base_runner.Runner.do_n_runs"><code class="docutils literal notranslate"><span class="pre">Runner.do_n_runs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.base_runner.Runner.get_runner"><code class="docutils literal notranslate"><span class="pre">Runner.get_runner()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.base_runner.Runner.param_grid"><code class="docutils literal notranslate"><span class="pre">Runner.param_grid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.base_runner.Runner.pipeline"><code class="docutils literal notranslate"><span class="pre">Runner.pipeline()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.base_runner.Runner.run"><code class="docutils literal notranslate"><span class="pre">Runner.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.base_runner.Runner.run_optuna"><code class="docutils literal notranslate"><span class="pre">Runner.run_optuna()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.pipeline.html#module-ebes.pipeline.utils">ebes.pipeline.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.utils.access_by_name"><code class="docutils literal notranslate"><span class="pre">access_by_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.utils.assign_by_name"><code class="docutils literal notranslate"><span class="pre">assign_by_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.utils.get_dict_from_trial_params"><code class="docutils literal notranslate"><span class="pre">get_dict_from_trial_params()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.utils.get_loss"><code class="docutils literal notranslate"><span class="pre">get_loss()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.utils.get_metrics"><code class="docutils literal notranslate"><span class="pre">get_metrics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.utils.get_optimizer"><code class="docutils literal notranslate"><span class="pre">get_optimizer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.utils.get_scheduler"><code class="docutils literal notranslate"><span class="pre">get_scheduler()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.utils.get_unique_folder_suffix"><code class="docutils literal notranslate"><span class="pre">get_unique_folder_suffix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.utils.optuna_df"><code class="docutils literal notranslate"><span class="pre">optuna_df()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.utils.parse_n_runs"><code class="docutils literal notranslate"><span class="pre">parse_n_runs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.utils.set_start_method"><code class="docutils literal notranslate"><span class="pre">set_start_method()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.utils.set_start_method_as_fork"><code class="docutils literal notranslate"><span class="pre">set_start_method_as_fork()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.pipeline.html#ebes.pipeline.utils.suggest_conf"><code class="docutils literal notranslate"><span class="pre">suggest_conf()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.pipeline.html#module-ebes.pipeline">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ebes.utils.html">ebes.utils package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ebes.utils.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebes.utils.html#ebes-utils-general-module">ebes.utils.general module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebes.utils.html#ebes-utils-reproduce-module">ebes.utils.reproduce module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ebes.utils.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.utils.html#module-ebes.utils.general">ebes.utils.general module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.utils.html#ebes.utils.general.LoadTime"><code class="docutils literal notranslate"><span class="pre">LoadTime</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.utils.html#ebes.utils.general.grad_norm"><code class="docutils literal notranslate"><span class="pre">grad_norm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.utils.html#ebes.utils.general.log_to_file"><code class="docutils literal notranslate"><span class="pre">log_to_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.utils.html#module-ebes.utils.reproduce">ebes.utils.reproduce module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ebes.utils.html#ebes.utils.reproduce.get_global_state"><code class="docutils literal notranslate"><span class="pre">get_global_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.utils.html#ebes.utils.reproduce.seed_everything"><code class="docutils literal notranslate"><span class="pre">seed_everything()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ebes.utils.html#ebes.utils.reproduce.set_global_state"><code class="docutils literal notranslate"><span class="pre">set_global_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ebes.utils.html#module-ebes.utils">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -442,8 +494,152 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="ebes-trainer-module">
-<h2>ebes.trainer module<a class="headerlink" href="#ebes-trainer-module" title="Link to this heading"></a></h2>
+<section id="module-ebes.trainer">
+<span id="ebes-trainer-module"></span><h2>ebes.trainer module<a class="headerlink" href="#module-ebes.trainer" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebes.trainer.</span></span><span class="sig-name descname"><span class="pre">Trainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_scheduler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_loader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_iters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iters_per_epoch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ckpt_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ckpt_replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ckpt_track_metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'epoch'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ckpt_resume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics_on_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.trainer.Trainer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A base class for all trainers.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.best_checkpoint">
+<span class="sig-name descname"><span class="pre">best_checkpoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebes.trainer.Trainer.best_checkpoint" title="Link to this definition"></a></dt>
+<dd><p>Return the path to the best checkpoint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.compute_metrics">
+<span class="sig-name descname"><span class="pre">compute_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phase</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.trainer.Trainer.compute_metrics" title="Link to this definition"></a></dt>
+<dd><p>Compute and log metrics.</p>
+<p>The metrics are computed based on the whole epoch data, so the granularity of
+metrics is epoch, so when the metrics are not None, the epoch is not None to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>phase</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'train'</span></code>, <code class="docutils literal notranslate"><span class="pre">'val'</span></code>]</span>) – wether the metrics were collected during train or validatoin.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.device">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#ebes.trainer.Trainer.device" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.load_best_model">
+<span class="sig-name descname"><span class="pre">load_best_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebes.trainer.Trainer.load_best_model" title="Link to this definition"></a></dt>
+<dd><p>Loads the best model to self._model according to the track metric.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.load_ckpt">
+<span class="sig-name descname"><span class="pre">load_ckpt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ckpt_fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.trainer.Trainer.load_ckpt" title="Link to this definition"></a></dt>
+<dd><p>Load model, optimizer and scheduler states.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ckpt_fname</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">PathLike</span></code></span>) – path to checkpoint.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.lr_scheduler">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lr_scheduler</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">_LRScheduler</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.trainer.Trainer.lr_scheduler" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.model">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Module</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.trainer.Trainer.model" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.optimizer">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">optimizer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optimizer</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.trainer.Trainer.optimizer" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebes.trainer.Trainer.run" title="Link to this definition"></a></dt>
+<dd><p>Train and validate model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.run_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run_name</span></span><a class="headerlink" href="#ebes.trainer.Trainer.run_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.save_ckpt">
+<span class="sig-name descname"><span class="pre">save_ckpt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ckpt_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.trainer.Trainer.save_ckpt" title="Link to this definition"></a></dt>
+<dd><p>Save model, optimizer and scheduler states.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ckpt_path</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">PathLike</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]</span>) – path to checkpoints. If <cite>ckpt_path</cite> is a directory, the
+checkpoint will be saved there with epoch, loss an metrics in the
+filename. All scalar metrics returned from <cite>compute_metrics</cite> are used to
+construct a filename. If full path is specified, the checkpoint will be
+saved exectly there. If <cite>None</cite> <cite>ckpt_dir</cite> from construct is used with
+subfolder named <cite>run_name</cite> from Trainer’s constructor.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.trainer.Trainer.train" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.train_loader">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">train_loader</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ebes.types.Batch" title="ebes.types.Batch"><span class="pre">Batch</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.trainer.Trainer.train_loader" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.val_loader">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">val_loader</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ebes.types.Batch" title="ebes.types.Batch"><span class="pre">Batch</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ebes.trainer.Trainer.val_loader" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebes.trainer.Trainer.validate">
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.trainer.Trainer.validate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-ebes.types">
 <span id="ebes-types-module"></span><h2>ebes.types module<a class="headerlink" href="#module-ebes.types" title="Link to this heading"></a></h2>
@@ -643,8 +839,8 @@
 </dd></dl>
 
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="module-ebes">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ebes" title="Link to this heading"></a></h2>
 </section>
 </section>
 
