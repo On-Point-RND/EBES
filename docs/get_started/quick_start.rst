@@ -24,7 +24,7 @@ Quick start
    .. code-block:: bash
 
       docker build -t ebes .
-      docker run --gpu all --ipc host -v /path/to/EBES:/workspace ebes bash
+      docker run -it --gpus all --ipc host -v /path/to/EBES:/workspace ebes bash
 
 #. Save the dataset in the EBES format. 
    Starting from now everything should be run inside a docker container.
@@ -48,7 +48,7 @@ Quick start
     .. code-block:: bash
 
        python main.py \
-           -d x5-retail  `# dataset config` \
+           -d x5  `# dataset config` \
            -m gru        `# method config` \
            -e test       `# experiment config, test for simple single train and test` \
            -s best       `# pick the best config found for gru and x5-retail specifically` \
