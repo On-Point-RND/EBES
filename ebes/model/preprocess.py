@@ -97,8 +97,9 @@ class Batch2Seq(BaseModel):
     def output_dim(self):
         return self._out_dim
 
-    def forward(self, batch: Batch) -> Seq:  # of shape (len, batch_size, )
-        batch = deepcopy(batch)
+    def forward(self, batch: Batch, copy=True) -> Seq:  # of shape (len, batch_size, )
+        if copy:
+            batch = deepcopy(batch)
 
         if not isinstance(batch.time, torch.Tensor):
             raise ValueError(

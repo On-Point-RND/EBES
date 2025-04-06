@@ -2,7 +2,6 @@
 # pyright: reportArgumentType=false
 
 import argparse
-from functools import partialmethod
 from pathlib import Path
 from typing import Any
 from collections.abc import Mapping
@@ -10,7 +9,6 @@ import signal
 import pdb
 
 from omegaconf import OmegaConf
-from tqdm import tqdm
 
 from ebes.pipeline.base_runner import Runner
 
@@ -59,10 +57,10 @@ if __name__ == "__main__":
 
     signal.signal(signal.SIGUSR1, start_debugging)
 
-    tqdm.__init__ = partialmethod(tqdm.__init__, disable=not args.tqdm)  # type: ignore
     config = collect_config(
         args.dataset, args.method, args.experiment, args.specify, args.gpu
     )
+    config["trainer"]["verbose"] = args.tqdm  # type: ignore
 
     if args.ablation_type != "none":
         config["run_name"] = (

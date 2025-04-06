@@ -9,7 +9,7 @@ import torch
 class Batch:
     lengths: torch.Tensor  # (batch,)
     time: np.ndarray | torch.Tensor  # (len, batch)
-    index: torch.Tensor | np.ndarray  # (batch,)
+    index: torch.Tensor | np.ndarray | None = None  # (batch,)
     num_features: torch.Tensor | None = None  # (len, batch, features)
     cat_features: torch.Tensor | None = None  # (len, batch, features)
     target: torch.Tensor | None = None  # (batch,), (len, batch) or (batch, n_targets)
@@ -66,7 +66,7 @@ class Batch:
         return tensor[:, :, idx]
 
     def __eq__(self, other):
-        assert isinstance(other, Batch)
+        assert isinstance(other, self.__class__)
         equal = True
         for field in fields(self):
             my_field, other_field = getattr(self, field.name), getattr(

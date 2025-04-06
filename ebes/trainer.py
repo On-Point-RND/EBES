@@ -41,6 +41,7 @@ class Trainer:
         ckpt_resume: str | os.PathLike | None = None,
         device: str = "cpu",
         metrics_on_train: bool = False,
+        verbose: bool = True,
     ):
         """Initialize trainer.
 
@@ -96,6 +97,7 @@ class Trainer:
         self._ckpt_resume = ckpt_resume
         self._device = device
         self._metrics_on_train = metrics_on_train
+        self._verbose = verbose
 
         self._model = None
         if model is not None:
@@ -273,7 +275,11 @@ class Trainer:
             and (total_iters > len(self._train_loader))  # type: ignore
         ):
             total_iters = len(self._train_loader)  # type: ignore
-        pbar = tqdm(zip(self._train_loader, range(total_iters)), total=total_iters)
+        pbar = tqdm(
+            zip(self._train_loader, range(total_iters)),
+            total=total_iters,
+            disable=not self._verbose,
+        )
 
         pbar.set_description_str(f"Epoch {self._last_epoch + 1: 3}")
         for batch, i in LoadTime(pbar, disable=pbar.disable):
@@ -328,7 +334,7 @@ class Trainer:
         for metric in self._metrics.values():
             metric.reset()
 
-        for batch in tqdm(loader):
+        for batch in tqdm(loader, disable=not self._verbose):
             batch.to(self._device)
             inp = batch
             gt = batch.pop_target()

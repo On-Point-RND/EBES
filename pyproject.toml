@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ebes"
-version = "0.0.4"
+version = "0.0.8"
 authors = [
   { name="Osin Dmitry", email="d.osin@skoltech.ru" },
 ]
