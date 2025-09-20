@@ -3,6 +3,18 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2410.03399-b31b1b.svg)](https://arxiv.org/abs/2410.03399)
 [![Docs](https://badgen.net/static/Docs/EBES/green)](https://on-point-rnd.github.io/EBES/)
 
+## **🎉 Accepted at KDD 2025!**  
+Our paper "**EBES: Easy Benchmarking for Event Sequences**" has been accepted to the *31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '25)*.  
+```bibtex
+@inproceedings{osin2025ebes,
+  title={EBES: Easy Benchmarking for Event Sequences},
+  author={Osin, Dmitry and Udovichenko, Igor and Shvetsov, Egor and Moskvoretskii, Viktor and Burnaev, Evgeny},
+  booktitle={Proceedings of the 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining V. 2},
+  pages={5730--5741},
+  year={2025}
+}
+```
+
 EBES is an easy-to-use development and application toolkit for Event Sequence(EvS) Assesment, with key features in configurability, compatibility and reproducibility. We hope this project could benefit both researchers and practitioners with the goal of easily customized development and open benchmarking in EvS.
 
 
