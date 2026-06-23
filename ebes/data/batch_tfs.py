@@ -11,6 +11,7 @@ import torch
 import numpy as np
 
 from ..types import Batch
+from ..utils.reproduce import spawn_generator
 
 
 logger = logging.getLogger(__name__)
@@ -151,11 +152,13 @@ class TimeToFeatures(BatchTransform):
         if batch.num_features_names is None:
             batch.num_features_names = [self.time_name]
             assert batch.num_features is None
-            batch.num_features = t
+            batch.num_features = t.to(torch.float32)
             return
 
         assert batch.num_features is not None
         batch.num_features_names.append(self.time_name)
+        if t.dtype != batch.num_features.dtype:
+            t = t.to(batch.num_features.dtype)
         batch.num_features = torch.cat((batch.num_features, t), dim=2)
 
 
@@ -332,12 +335,10 @@ class RandomSlices(BatchTransform):
         sequence length.
     """
     seed: int | None = None
-    """Value to seed the random generator."""
-
-    def __post_init__(self):
-        self._gen = np.random.default_rng(self.seed)
+    """Deprecated and ignored; sampling now uses the global RNG."""
 
     def __call__(self, batch: Batch):
+        gen = spawn_generator()
 
         lens = []
         times = []
@@ -377,14 +378,14 @@ class RandomSlices(BatchTransform):
                 cnt_min = max(int(c_len * self.short_seq_crop_rate), 1)
 
             if cnt_max > cnt_min:
-                new_len = self._gen.integers(cnt_min, cnt_max, size=self.split_count)
+                new_len = gen.integers(cnt_min, cnt_max, size=self.split_count)
             else:
                 new_len = np.full(self.split_count, cnt_min)
 
             max_len = max(max_len, *new_len)
             available_start_pos = (c_len - new_len).clip(0, None)
             start_pos = (
-                self._gen.uniform(size=self.split_count)
+                gen.uniform(size=self.split_count)
                 * (available_start_pos + 1 - 1e-9)
             ).astype(int)
 

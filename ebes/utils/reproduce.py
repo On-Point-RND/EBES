@@ -19,6 +19,19 @@ def seed_everything(
     torch.use_deterministic_algorithms(only_deterministic_algorithms, warn_only=True)
 
 
+def spawn_generator() -> np.random.Generator:
+    """Create a fresh NumPy generator seeded from PyTorch's global RNG.
+
+    Using the global torch RNG as the entropy source makes the draws vary across
+    epochs and DataLoader workers (PyTorch reseeds every worker each epoch as
+    ``base_seed + worker_id``, and ``base_seed`` is redrawn from the global RNG for
+    each new iterator), while staying reproducible across runs whenever the global
+    seed is fixed via :func:`seed_everything`.
+    """
+    seed = int(torch.randint(0, 2**63 - 1, (1,)).item())
+    return np.random.default_rng(seed)
+
+
 def get_global_state() -> dict[str, Any]:
     state_dict = {
         "python": random.getstate(),
