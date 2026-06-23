@@ -147,6 +147,22 @@
 <span class="sig-prename descclassname"><span class="pre">ebes.utils.reproduce.</span></span><span class="sig-name descname"><span class="pre">set_global_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebes.utils.reproduce.set_global_state" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="ebes.utils.reproduce.spawn_generator">
+<span class="sig-prename descclassname"><span class="pre">ebes.utils.reproduce.</span></span><span class="sig-name descname"><span class="pre">spawn_generator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebes.utils.reproduce.spawn_generator" title="Link to this definition"></a></dt>
+<dd><p>Create a fresh NumPy generator seeded from PyTorch’s global RNG.</p>
+<p>Using the global torch RNG as the entropy source makes the draws vary across
+epochs and DataLoader workers (PyTorch reseeds every worker each epoch as
+<code class="docutils literal notranslate"><span class="pre">base_seed</span> <span class="pre">+</span> <span class="pre">worker_id</span></code>, and <code class="docutils literal notranslate"><span class="pre">base_seed</span></code> is redrawn from the global RNG for
+each new iterator), while staying reproducible across runs whenever the global
+seed is fixed via <a class="reference internal" href="#ebes.utils.reproduce.seed_everything" title="ebes.utils.reproduce.seed_everything"><code class="xref py py-func docutils literal notranslate"><span class="pre">seed_everything()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generator</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-ebes.utils">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ebes.utils" title="Link to this heading"></a></h2>
